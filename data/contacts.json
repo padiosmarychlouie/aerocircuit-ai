@@ -1,0 +1,53 @@
+﻿[
+    {
+        "id":  "#INQ-63589",
+        "name":  "Dr. Elena Rostova",
+        "email":  "e.rostova@quantum-pcba.com",
+        "company":  "Quantum Systems PCBA",
+        "role":  "VP Operations",
+        "volume":  "100k",
+        "interests":  [
+                          "bom-shortages",
+                          "smt-fleet"
+                      ],
+        "message":  "Evaluating Level 2 AI planning agent for our Austin SMT line.",
+        "contact_date":  "2026-11-10T21:23:16Z",
+        "client_ip":  "127.0.0.1",
+        "country":  "US",
+        "status":  "NEW"
+    },
+    {
+        "id":  "#INQ-33988",
+        "name":  "Dr. Elena Rostova",
+        "email":  "e.rostova@quantum-pcba.com",
+        "company":  "Quantum Systems PCBA",
+        "role":  "VP Operations",
+        "volume":  "100k",
+        "interests":  [
+                          "bom-shortages",
+                          "smt-fleet"
+                      ],
+        "message":  "Evaluating Level 2 AI planning agent for our Austin SMT line.",
+        "contact_date":  "2026-11-10T20:48:56Z",
+        "client_ip":  "127.0.0.1",
+        "country":  "US",
+        "status":  "NEW"
+    },
+    {
+        "id":  "#INQ-98524",
+        "name":  "Dr. Elena Rostova",
+        "email":  "e.rostova@quantum-pcba.com",
+        "company":  "Quantum Systems PCBA",
+        "role":  "VP Operations",
+        "volume":  "100k",
+        "interests":  [
+                          "bom-shortages",
+                          "smt-fleet"
+                      ],
+        "message":  "Evaluating Level 2 AI planning agent for our Austin SMT line.",
+        "contact_date":  "2026-11-10T20:48:05Z",
+        "client_ip":  "127.0.0.1",
+        "country":  "US",
+        "status":  "NEW"
+    }
+]
