@@ -20,53 +20,67 @@
       theme: {
         extend: {
           colors: {
-            "on-surface": "#0b1c30",
-            "tertiary-container": "#00563a",
-            "tertiary-fixed-dim": "#68dba9",
-            "inverse-surface": "#213145",
-            "error-container": "#ffdad6",
-            "on-surface-variant": "#444653",
-            "primary-fixed": "#dde1ff",
-            "secondary-container": "#dae2fd",
-            "surface-container-high": "#dce9ff",
-            "on-secondary-fixed": "#131b2e",
-            "surface-container-lowest": "#ffffff",
-            "background": "#f8f9ff",
-            "tertiary-fixed": "#85f8c4",
-            "secondary-fixed-dim": "#bec6e0",
-            "on-tertiary-fixed-variant": "#005137",
-            "on-secondary": "#ffffff",
-            "surface-container": "#e5eeff",
-            "surface-bright": "#f8f9ff",
-            "surface-variant": "#d3e4fe",
-            "on-error": "#ffffff",
-            "on-primary-fixed-variant": "#173bab",
-            "inverse-on-surface": "#eaf1ff",
-            "surface-tint": "#3755c3",
-            "on-secondary-fixed-variant": "#3f465c",
-            "on-error-container": "#93000a",
-            "secondary-fixed": "#dae2fd",
-            "tertiary": "#003d28",
-            "outline-variant": "#c4c5d5",
-            "secondary": "#565e74",
-            "surface-container-low": "#eff4ff",
-            "on-primary": "#ffffff",
-            "surface-container-highest": "#d3e4fe",
-            "on-secondary-container": "#5c647a",
-            "primary": "#00288e",
-            "outline": "#757684",
-            "on-primary-container": "#a8b8ff",
-            "on-tertiary": "#ffffff",
-            "on-primary-fixed": "#001453",
-            "primary-fixed-dim": "#b8c4ff",
-            "error": "#ba1a1a",
-            "on-background": "#0b1c30",
-            "inverse-primary": "#b8c4ff",
-            "on-tertiary-container": "#5bcf9e",
-            "primary-container": "#1e40af",
-            "surface": "#f8f9ff",
-            "surface-dim": "#cbdbf5",
-            "on-tertiary-fixed": "#002114"
+            // Dark Industrial Dashboard Theme
+            "background": "#080D18",                   // Main background: Midnight Navy
+            "surface": "#080D18",                      // Midnight Navy
+            "surface-dim": "#050811",
+            "surface-bright": "#111C2E",
+
+            // Surfaces & Cards
+            "surface-container-lowest": "#111C2E",    // Cards: Dark Charcoal
+            "surface-container-low": "#0B1220",       // Sidebar: Deep Navy
+            "surface-container": "#162238",           // Secondary surfaces
+            "surface-container-high": "#1C2A44",      // High contrast surface
+            "surface-container-highest": "#243656",   // Highest container / active pill
+            "surface-variant": "#1A273F",
+            "inverse-surface": "#0B1220",             // Header: Deep Navy
+            "inverse-on-surface": "#F8FAFC",
+
+            // Primary Accents (Electric Blue)
+            "primary": "#3B82F6",                     // Primary accent: Electric Blue
+            "primary-container": "#1D4ED8",           // Electric Blue container
+            "on-primary": "#FFFFFF",
+            "on-primary-container": "#BFDBFE",
+            "primary-fixed": "#3B82F6",
+            "primary-fixed-dim": "#60A5FA",
+            "on-primary-fixed": "#020617",
+            "on-primary-fixed-variant": "#93C5FD",
+
+            // Secondary Accents (Cyan)
+            "cyan-accent": "#22D3EE",                 // Secondary accent: Cyan
+            "cyan-container": "#083344",
+            "on-cyan-container": "#67E8F9",
+            "secondary-container": "#1E293B",
+            "on-secondary-container": "#94A3B8",
+            "secondary-fixed": "#162238",
+            "secondary-fixed-dim": "#22D3EE",
+            "on-secondary-fixed": "#F8FAFC",
+            "on-secondary-fixed-variant": "#94A3B8",
+            "on-secondary": "#FFFFFF",
+            "secondary": "#94A3B8",                   // Secondary text
+
+            // Typography & Borders
+            "on-surface": "#F8FAFC",                  // Primary text
+            "on-background": "#F8FAFC",               // Primary text
+            "on-surface-variant": "#94A3B8",          // Secondary text
+            "outline": "#1E293B",                     // Subtle dark borders
+            "outline-variant": "#334155",             // Card border outline
+
+            // Status Colors (Grounded & Industrial)
+            "tertiary": "#10B981",                    // Emerald normal/active
+            "tertiary-container": "#064E3B",
+            "on-tertiary-container": "#34D399",
+            "tertiary-fixed": "#059669",
+            "tertiary-fixed-dim": "#10B981",
+            "on-tertiary-fixed": "#ECFDF5",
+            "on-tertiary-fixed-variant": "#A7F3D0",
+            "on-tertiary": "#FFFFFF",
+
+            // Error / Constraint Colors
+            "error": "#EF4444",                       // Critical constraint / warning
+            "error-container": "#7F1D1D",
+            "on-error": "#FFFFFF",
+            "on-error-container": "#FCA5A5",
           },
           borderRadius: {
             "DEFAULT": "0.25rem",
@@ -127,8 +141,8 @@
       html, body {
         margin: 0;
         padding: 0;
-        background-color: #f8f9ff;
-        color: #0b1c30;
+        background-color: #080D18;
+        color: #F8FAFC;
         font-family: 'Inter', sans-serif;
       }
       body {
@@ -141,14 +155,15 @@
       height: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #f1f5f9;
+      background: #080D18;
     }
     ::-webkit-scrollbar-thumb {
-      background: #cbd5e1;
+      background: #1E293B;
       border-radius: 3px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
     }
     ::-webkit-scrollbar-thumb:hover {
-      background: #94a3b8;
+      background: #3B82F6;
     }
 
     /* Pulse animations */
@@ -166,7 +181,7 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background-color: #1e40af;
+      background-color: #22D3EE;
       animation: typingBounce 1.4s infinite ease-in-out both;
     }
     .typing-dot:nth-child(1) { animation-delay: -0.32s; }
@@ -174,6 +189,58 @@
     @keyframes typingBounce {
       0%, 80%, 100% { transform: scale(0); }
       40% { transform: scale(1.0); }
+    }
+
+    /* Dark Industrial Surface Overrides */
+    .bg-white {
+      background-color: #111C2E !important;
+      color: #F8FAFC !important;
+    }
+    .bg-slate-50 {
+      background-color: #162238 !important;
+    }
+    .bg-slate-100 {
+      background-color: #1C2A44 !important;
+    }
+    .bg-slate-200 {
+      background-color: #243656 !important;
+    }
+    .border-slate-100, .border-slate-200, .border-slate-300 {
+      border-color: #1E293B !important;
+    }
+    .text-slate-900, .text-slate-800, .text-slate-700 {
+      color: #F8FAFC !important;
+    }
+    .text-slate-600, .text-slate-500 {
+      color: #94A3B8 !important;
+    }
+    .text-slate-400 {
+      color: #64748B !important;
+    }
+    input, select, textarea {
+      background-color: #0B1220 !important;
+      color: #F8FAFC !important;
+      border-color: #1E293B !important;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #3B82F6 !important;
+      box-shadow: 0 0 0 1px #3B82F6, 0 0 12px rgba(59, 130, 246, 0.25) !important;
+    }
+    /* Industrial Grid & Glow Accents */
+    .hud-grid {
+      background-image: radial-gradient(rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    .hud-panel {
+      background-color: #111C2E;
+      border: 1px solid #1E293B;
+      box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+    }
+    .glow-cyan {
+      box-shadow: 0 0 15px -2px rgba(34, 211, 238, 0.25);
+    }
+    .glow-blue {
+      box-shadow: 0 0 15px -2px rgba(59, 130, 246, 0.25);
     }
   </style>
 </head>

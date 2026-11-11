@@ -27,17 +27,40 @@
       theme: {
         extend: {
           colors: {
-            "cobalt-primary": "#1E40AF",
-            "cobalt-hover": "#173BAB",
-            "slate-dark": "#0B1C30",
-            "slate-header": "#0F172A",
-            "surface-ground": "#F8FAFC",
-            "surface-card": "#FFFFFF",
-            "accent-emerald": "#059669",
-            "accent-amber": "#D97706",
-            "accent-crimson": "#DC2626",
-            "border-clean": "#E2E8F0",
-            "border-subtle": "#CBD5E1"
+            // Dark Industrial Dashboard Theme
+            "background": "#080D18",                   // Main background: Midnight Navy
+            "surface": "#080D18",                      // Midnight Navy
+            "sidebar": "#0B1220",                      // Deep Navy
+            "surface-dim": "#050811",
+            "surface-card": "#111C2E",                 // Cards: Dark Charcoal
+            "surface-container": "#162238",            // Secondary surfaces
+            "surface-high": "#1C2A44",                 // High contrast surface
+            "surface-highest": "#243656",              // Highest surface
+            
+            // Accents
+            "primary": "#3B82F6",                      // Primary accent: Electric Blue
+            "primary-hover": "#2563EB",
+            "cyan-accent": "#22D3EE",                  // Secondary accent: Cyan
+            "cyan-dark": "#083344",
+            
+            // Typography & Borders
+            "primary-text": "#F8FAFC",                 // Primary text
+            "secondary-text": "#94A3B8",               // Secondary text
+            "border-dark": "#1E293B",                  // Subtle dark borders
+            "border-subtle": "#334155",                // Card border outline
+
+            // Status Colors
+            "accent-emerald": "#10B981",               // Normal / Success
+            "accent-amber": "#F59E0B",                 // Warning / Caution
+            "accent-crimson": "#EF4444",               // Critical constraint
+
+            // Legacy alias support
+            "cobalt-primary": "#3B82F6",
+            "cobalt-hover": "#2563EB",
+            "slate-dark": "#080D18",
+            "slate-header": "#0B1220",
+            "surface-ground": "#080D18",
+            "border-clean": "#1E293B"
           },
           fontFamily: {
             "sans": ["Inter", "sans-serif"],
@@ -49,97 +72,153 @@
   </script>
 
   <style>
+    @layer base {
+      html, body {
+        margin: 0;
+        padding: 0;
+        background-color: #080D18;
+        color: #F8FAFC;
+        font-family: 'Inter', sans-serif;
+      }
+    }
+
     /* Technical Grid Pattern */
     .bg-grid-pattern {
-      background-image: radial-gradient(rgba(30, 64, 175, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(59, 130, 246, 0.09) 1px, transparent 1px);
       background-size: 24px 24px;
     }
 
     .bg-dark-grid {
-      background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      background-image: radial-gradient(rgba(34, 211, 238, 0.08) 1px, transparent 1px);
       background-size: 24px 24px;
     }
 
     /* Subtle pulse animations */
     @keyframes pulse-subtle {
-
-      0%,
-      100% {
-        opacity: 1;
-      }
-
-      50% {
-        opacity: 0.4;
-      }
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
     }
-
     .animate-pulse-subtle {
       animation: pulse-subtle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
     }
 
     /* Custom Scrollbar */
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 6px;
+      height: 6px;
     }
-
     ::-webkit-scrollbar-track {
-      background: #F1F5F9;
+      background: #080D18;
     }
-
     ::-webkit-scrollbar-thumb {
-      background: #CBD5E1;
-      border-radius: 4px;
+      background: #1E293B;
+      border-radius: 3px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #3B82F6;
     }
 
-    ::-webkit-scrollbar-thumb:hover {
-      background: #94A3B8;
+    /* Glow Accents */
+    .glow-cyan {
+      box-shadow: 0 0 15px -2px rgba(34, 211, 238, 0.25);
+    }
+    .glow-blue {
+      box-shadow: 0 0 15px -2px rgba(59, 130, 246, 0.25);
+    }
+
+    /* Dark Industrial Surface Overrides */
+    .bg-white {
+      background-color: #111C2E !important;
+      color: #F8FAFC !important;
+    }
+    .bg-slate-50 {
+      background-color: #162238 !important;
+    }
+    .bg-slate-100 {
+      background-color: #1C2A44 !important;
+    }
+    .bg-slate-200 {
+      background-color: #243656 !important;
+    }
+    .bg-slate-800 {
+      background-color: #111C2E !important;
+    }
+    .bg-slate-900 {
+      background-color: #0B1220 !important;
+    }
+    .bg-slate-950 {
+      background-color: #050811 !important;
+    }
+    .border-slate-100, .border-slate-200, .border-slate-300, .border-slate-700, .border-slate-800 {
+      border-color: #1E293B !important;
+    }
+    .text-slate-900, .text-slate-800, .text-slate-700 {
+      color: #F8FAFC !important;
+    }
+    .text-slate-600, .text-slate-500 {
+      color: #94A3B8 !important;
+    }
+    .text-slate-400 {
+      color: #64748B !important;
+    }
+    .text-slate-300 {
+      color: #CBD5E1 !important;
+    }
+    input, select, textarea {
+      background-color: #0B1220 !important;
+      color: #F8FAFC !important;
+      border-color: #1E293B !important;
+    }
+    input:focus, select:focus, textarea:focus {
+      border-color: #3B82F6 !important;
+      box-shadow: 0 0 0 1px #3B82F6, 0 0 12px rgba(59, 130, 246, 0.25) !important;
     }
   </style>
 </head>
 
-<body class="bg-[#F8FAFC] text-[#0B1C30] font-sans antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-[#080D18] text-[#F8FAFC] font-sans antialiased selection:bg-blue-600 selection:text-white">
 
   <!-- ============================================================ -->
   <!-- 1. TOP GLOBAL NAVIGATION BAR -->
   <!-- ============================================================ -->
-  <header class="sticky top-0 z-50 bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-700/80 shadow-md">
+  <header class="sticky top-0 z-50 bg-[#0B1220]/95 backdrop-blur-md border-b border-[#1E293B] shadow-lg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
       <!-- Logo & System Tag -->
       <a href="solution.html" class="flex items-center gap-3 group">
         <div
-          class="w-9 h-9 rounded bg-blue-600/30 border border-blue-400/50 flex items-center justify-center text-blue-300 group-hover:scale-105 transition-transform">
+          class="w-9 h-9 rounded bg-blue-600/20 border border-blue-400/40 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform shadow-[0_0_12px_rgba(59,130,246,0.3)]">
           <span class="material-symbols-outlined text-[22px]">memory</span>
         </div>
         <div class="flex flex-col">
           <div class="flex items-center gap-2">
-            <span class="font-bold text-white text-base tracking-tight font-sans">AEROCIRCUIT AI</span>
+            <span class="font-bold text-[#F8FAFC] text-base tracking-tight font-sans">AEROCIRCUIT AI</span>
             <span
-              class="text-[10px] bg-blue-500/30 text-blue-200 border border-blue-400/30 px-1.5 py-0.5 rounded font-mono font-semibold">SOLUTION
+              class="text-[10px] bg-blue-500/20 text-cyan-300 border border-cyan-400/30 px-1.5 py-0.5 rounded font-mono font-semibold">SOLUTION
               WHITEPAPER</span>
           </div>
-          <span class="text-[11px] text-slate-400 font-mono">Level 2 Agentic Planning &amp; Load Management</span>
+          <span class="text-[11px] text-[#94A3B8] font-mono">Level 2 Agentic Planning &amp; Load Management</span>
         </div>
       </a>
 
       <!-- Desktop Navigation Links -->
-      <nav class="hidden lg:flex items-center gap-5 text-xs font-semibold text-slate-300">
-        <a href="#overview" class="hover:text-white transition-colors">Overview</a>
-        <a href="#problem" class="hover:text-white transition-colors">Challenge</a>
-        <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
-        <a href="#responsibilities" class="hover:text-white transition-colors">Capabilities</a>
-        <a href="#case-study" class="hover:text-white transition-colors">#PO-94281</a>
-        <a href="#interactive-demo" class="hover:text-white transition-colors text-blue-400 flex items-center gap-1">
+      <nav class="hidden lg:flex items-center gap-5 text-xs font-semibold text-[#94A3B8]">
+        <a href="#overview" class="hover:text-[#F8FAFC] transition-colors">Overview</a>
+        <a href="#problem" class="hover:text-[#F8FAFC] transition-colors">Challenge</a>
+        <a href="#architecture" class="hover:text-[#F8FAFC] transition-colors">Architecture</a>
+        <a href="#responsibilities" class="hover:text-[#F8FAFC] transition-colors">Capabilities</a>
+        <a href="#case-study" class="hover:text-[#F8FAFC] transition-colors">#PO-94281</a>
+        <a href="#interactive-demo" class="hover:text-cyan-400 transition-colors text-cyan-400 flex items-center gap-1">
           <span class="material-symbols-outlined text-[14px]">play_circle</span>Simulator
         </a>
-        <a href="#roi-calculator" class="hover:text-white transition-colors">ROI</a>
-        <a href="#design-document" class="hover:text-white transition-colors text-purple-300 flex items-center gap-1">
+        <a href="#roi-calculator" class="hover:text-[#F8FAFC] transition-colors">ROI</a>
+        <a href="#design-document" class="hover:text-[#F8FAFC] transition-colors text-purple-300 flex items-center gap-1">
           <span class="material-symbols-outlined text-[14px]">description</span>Design Doc
         </a>
-        <a href="#evidence-section" class="hover:text-white transition-colors text-emerald-400 flex items-center gap-1">
+        <a href="#evidence-section" class="hover:text-emerald-400 transition-colors text-emerald-400 flex items-center gap-1">
           <span class="material-symbols-outlined text-[14px]">download</span>Downloads
         </a>
-        <a href="#contact" class="hover:text-white transition-colors text-blue-300 flex items-center gap-1">
+        <a href="#contact" class="hover:text-cyan-300 transition-colors text-cyan-300 flex items-center gap-1">
           <span class="material-symbols-outlined text-[14px]">mail</span>Contact
         </a>
       </nav>
@@ -148,13 +227,13 @@
       <div class="flex items-center gap-3">
         <!-- Contact CTA Button -->
         <a href="#contact"
-          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-blue-600/30 hover:bg-blue-600/50 text-blue-200 border border-blue-400/30 text-xs font-semibold transition-all">
+          class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-[#162238] hover:bg-[#1C2A44] text-cyan-300 border border-[#1E293B] text-xs font-semibold transition-all">
           <span class="material-symbols-outlined text-[15px]">send</span>
           <span>Book Pilot</span>
         </a>
         <!-- Live System Link -->
         <a href="index.html"
-          class="inline-flex items-center gap-2 px-3.5 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-sm transition-all border border-blue-400/30 hover:shadow-blue-500/20 hover:shadow-md">
+          class="inline-flex items-center gap-2 px-3.5 py-2 rounded bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md transition-all border border-blue-400/40 hover:shadow-blue-500/30">
           <span class="material-symbols-outlined text-[16px]">dashboard</span>
           <span>Launch Live System</span>
           <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
@@ -167,7 +246,7 @@
   <!-- 2. HERO SECTION -->
   <!-- ============================================================ -->
   <section id="overview"
-    class="relative bg-[#0F172A] text-white pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-dark-grid border-b border-slate-800">
+    class="relative bg-[#080D18] text-[#F8FAFC] pt-16 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden bg-dark-grid border-b border-[#1E293B]">
     <!-- Glow Effects -->
     <div
       class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-blue-600/15 rounded-full blur-[100px] pointer-events-none">
@@ -176,75 +255,75 @@
     <div class="max-w-6xl mx-auto text-center relative z-10">
       <!-- Status Badge -->
       <div
-        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-900/50 border border-blue-400/30 text-blue-300 text-xs font-mono font-medium mb-6">
+        class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#111C2E] border border-cyan-500/30 text-cyan-300 text-xs font-mono font-medium mb-6 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
         <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
         <span>LEVEL 2 AGENTIC AI • AUSTIN FAB 4 TELEMETRY GROUNDED • 100% AUDITABLE</span>
       </div>
 
       <!-- Main Headline -->
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F8FAFC] mb-6 leading-tight">
         Autonomous Manufacturing Planning &amp; Load Management
       </h1>
 
       <!-- Executive Subhead -->
-      <p class="text-slate-300 text-base sm:text-lg max-w-3xl mx-auto mb-8 font-normal leading-relaxed">
+      <p class="text-[#94A3B8] text-base sm:text-lg max-w-3xl mx-auto mb-8 font-normal leading-relaxed">
         A mission-critical AI planning assistant that identifies material shortages, balances SMT line workloads,
-        optimizes multimodal freight, and enforces formal <strong class="text-white">Human-in-the-Loop approval</strong>
+        optimizes multimodal freight, and enforces formal <strong class="text-[#F8FAFC]">Human-in-the-Loop approval</strong>
         before committing a single change to the manufacturing execution system.
       </p>
 
       <!-- Key Value Metric Badges -->
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-4xl mx-auto mb-10 text-left">
         <!-- Metric 1 -->
-        <div class="bg-slate-800/80 p-4 rounded border border-slate-700/80 backdrop-blur-sm">
-          <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Lead Time Compression</div>
+        <div class="bg-[#111C2E] p-4 rounded-lg border border-[#1E293B] shadow-md hover:border-blue-500/40 transition-colors">
+          <div class="text-[11px] font-mono text-[#94A3B8] uppercase tracking-wider mb-1">Lead Time Compression</div>
           <div class="text-2xl font-bold font-mono text-emerald-400 flex items-center gap-1">
             <span>-5.5 Days</span>
             <span class="material-symbols-outlined text-[18px]">trending_down</span>
           </div>
-          <div class="text-[11px] text-slate-400 mt-1">37.0d to 31.5d for #PO-94281</div>
+          <div class="text-[11px] text-[#94A3B8] mt-1">37.0d to 31.5d for #PO-94281</div>
         </div>
 
         <!-- Metric 2 -->
-        <div class="bg-slate-800/80 p-4 rounded border border-slate-700/80 backdrop-blur-sm">
-          <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Logistics Cost Savings</div>
-          <div class="text-2xl font-bold font-mono text-blue-400 flex items-center gap-1">
+        <div class="bg-[#111C2E] p-4 rounded-lg border border-[#1E293B] shadow-md hover:border-blue-500/40 transition-colors">
+          <div class="text-[11px] font-mono text-[#94A3B8] uppercase tracking-wider mb-1">Logistics Cost Savings</div>
+          <div class="text-2xl font-bold font-mono text-cyan-400 flex items-center gap-1">
             <span>$3,030 Saved</span>
           </div>
-          <div class="text-[11px] text-slate-400 mt-1">Phased Split Load vs Pure Express</div>
+          <div class="text-[11px] text-[#94A3B8] mt-1">Phased Split Load vs Pure Express</div>
         </div>
 
         <!-- Metric 3 -->
-        <div class="bg-slate-800/80 p-4 rounded border border-slate-700/80 backdrop-blur-sm">
-          <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Placement Throughput</div>
+        <div class="bg-[#111C2E] p-4 rounded-lg border border-[#1E293B] shadow-md hover:border-blue-500/40 transition-colors">
+          <div class="text-[11px] font-mono text-[#94A3B8] uppercase tracking-wider mb-1">Placement Throughput</div>
           <div class="text-2xl font-bold font-mono text-amber-400 flex items-center gap-1">
             <span>+45.6%</span>
             <span class="material-symbols-outlined text-[18px]">bolt</span>
           </div>
-          <div class="text-[11px] text-slate-400 mt-1">3,125 u/d &rarr; 4,550 u/d (Lines 3+5)</div>
+          <div class="text-[11px] text-[#94A3B8] mt-1">3,125 u/d &rarr; 4,550 u/d (Lines 3+5)</div>
         </div>
 
         <!-- Metric 4 -->
-        <div class="bg-slate-800/80 p-4 rounded border border-slate-700/80 backdrop-blur-sm">
-          <div class="text-[11px] font-mono text-slate-400 uppercase tracking-wider mb-1">Autonomy Governance</div>
+        <div class="bg-[#111C2E] p-4 rounded-lg border border-[#1E293B] shadow-md hover:border-blue-500/40 transition-colors">
+          <div class="text-[11px] font-mono text-[#94A3B8] uppercase tracking-wider mb-1">Autonomy Governance</div>
           <div class="text-2xl font-bold font-mono text-purple-400 flex items-center gap-1">
             <span>Level 2 AI</span>
             <span class="material-symbols-outlined text-[18px]">verified_user</span>
           </div>
-          <div class="text-[11px] text-slate-400 mt-1">Human Sign-off + SHA-256 Seal</div>
+          <div class="text-[11px] text-[#94A3B8] mt-1">Human Sign-off + SHA-256 Seal</div>
         </div>
       </div>
 
       <!-- Action Buttons -->
       <div class="flex flex-wrap items-center justify-center gap-4">
         <a href="index.html"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-blue-500/30">
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition-all shadow-lg hover:shadow-blue-500/30 border border-blue-400/40">
           <span class="material-symbols-outlined text-[18px]">play_arrow</span>
           <span>Launch Live Production Console</span>
         </a>
         <a href="#interactive-demo"
-          class="inline-flex items-center gap-2 px-6 py-3 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-600 font-semibold text-sm transition-colors">
-          <span class="material-symbols-outlined text-[18px]">terminal</span>
+          class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#111C2E] hover:bg-[#162238] text-[#F8FAFC] border border-[#1E293B] font-semibold text-sm transition-colors">
+          <span class="material-symbols-outlined text-[18px] text-cyan-400">terminal</span>
           <span>Interactive Agent Simulator</span>
         </a>
         <a href="#architecture"
@@ -260,12 +339,12 @@
   <!-- ============================================================ -->
   <section id="problem" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider mb-2">The Industrial Challenge
+      <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">The Industrial Challenge
       </div>
-      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
         Why Traditional Manufacturing Planning Breaks Down
       </h2>
-      <p class="text-slate-600 text-sm mt-3">
+      <p class="text-[#94A3B8] text-sm mt-3">
         High-mix, mission-critical electronics production (PCBA &amp; Box-Build) operates under razor-thin tolerances.
         When unexpected part shortages occur, static ERP systems fail to evaluate holistic trade-offs.
       </p>
@@ -274,70 +353,70 @@
     <!-- 4 Problem Pillars -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
       <!-- Pillar 1 -->
-      <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-        <div class="w-10 h-10 rounded bg-red-50 text-red-600 flex items-center justify-center mb-4">
+      <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg hover:border-red-500/40 transition-all">
+        <div class="w-10 h-10 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center mb-4">
           <span class="material-symbols-outlined text-[24px]">inventory_2</span>
         </div>
-        <h3 class="font-bold text-slate-900 text-base mb-2">Component Buffer Erosion</h3>
-        <p class="text-xs text-slate-600 leading-relaxed">
+        <h3 class="font-bold text-[#F8FAFC] text-base mb-2">Component Buffer Erosion</h3>
+        <p class="text-xs text-[#94A3B8] leading-relaxed">
           On complex 142-MPN BOMs, a single missing PMIC (Texas Instruments TPS65988CR) delays a $2.4M customer
           delivery. Static ERPs signal shortages too late for cost-effective re-routing.
         </p>
         <div
-          class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+          class="mt-4 pt-3 border-t border-[#1E293B] flex items-center justify-between text-[11px] font-mono text-[#94A3B8]">
           <span>Austin Fab 4 Ground Truth</span>
-          <span class="text-red-600 font-semibold">D+8 Delivery Risk</span>
+          <span class="text-red-400 font-semibold">D+8 Delivery Risk</span>
         </div>
       </div>
 
       <!-- Pillar 2 -->
-      <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-        <div class="w-10 h-10 rounded bg-amber-50 text-amber-600 flex items-center justify-center mb-4">
+      <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg hover:border-amber-500/40 transition-all">
+        <div class="w-10 h-10 rounded-lg bg-amber-500/20 text-amber-400 border border-amber-500/30 flex items-center justify-center mb-4">
           <span class="material-symbols-outlined text-[24px]">precision_manufacturing</span>
         </div>
-        <h3 class="font-bold text-slate-900 text-base mb-2">SMT Fleet Bottlenecks</h3>
-        <p class="text-xs text-slate-600 leading-relaxed">
+        <h3 class="font-bold text-[#F8FAFC] text-base mb-2">SMT Fleet Bottlenecks</h3>
+        <p class="text-xs text-[#94A3B8] leading-relaxed">
           Relying on a single line (Line 3 Panasonic NPM-D3) creates line starvation. If production stops, solder paste
           stencil chemistry exceeds its 4.0-hour dry-out limit, causing rework.
         </p>
         <div
-          class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+          class="mt-4 pt-3 border-t border-[#1E293B] flex items-center justify-between text-[11px] font-mono text-[#94A3B8]">
           <span>Chemical Constraint</span>
-          <span class="text-amber-600 font-semibold">4.0h Idle Stencil Limit</span>
+          <span class="text-amber-400 font-semibold">4.0h Idle Stencil Limit</span>
         </div>
       </div>
 
       <!-- Pillar 3 -->
-      <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-        <div class="w-10 h-10 rounded bg-blue-50 text-blue-600 flex items-center justify-center mb-4">
+      <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg hover:border-blue-500/40 transition-all">
+        <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-cyan-400 border border-blue-500/30 flex items-center justify-center mb-4">
           <span class="material-symbols-outlined text-[24px]">local_shipping</span>
         </div>
-        <h3 class="font-bold text-slate-900 text-base mb-2">Logistics Cost Escalation</h3>
-        <p class="text-xs text-slate-600 leading-relaxed">
+        <h3 class="font-bold text-[#F8FAFC] text-base mb-2">Logistics Cost Escalation</h3>
+        <p class="text-xs text-[#94A3B8] leading-relaxed">
           When delays occur, planners panic and book emergency air freight for all 25 Euro pallets (4,250 kg), costing
           $11,450. Intelligent phased split-loads are rarely evaluated under time pressure.
         </p>
         <div
-          class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+          class="mt-4 pt-3 border-t border-[#1E293B] flex items-center justify-between text-[11px] font-mono text-[#94A3B8]">
           <span>Freight Delta</span>
-          <span class="text-blue-600 font-semibold">+$3,030 Waste</span>
+          <span class="text-cyan-400 font-semibold">+$3,030 Waste</span>
         </div>
       </div>
 
       <!-- Pillar 4 -->
-      <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-sm hover:border-blue-300 transition-all">
-        <div class="w-10 h-10 rounded bg-purple-50 text-purple-600 flex items-center justify-center mb-4">
+      <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg hover:border-purple-500/40 transition-all">
+        <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center mb-4">
           <span class="material-symbols-outlined text-[24px]">gavel</span>
         </div>
-        <h3 class="font-bold text-slate-900 text-base mb-2">The Rogue AI Hazard</h3>
-        <p class="text-xs text-slate-600 leading-relaxed">
+        <h3 class="font-bold text-[#F8FAFC] text-base mb-2">The Rogue AI Hazard</h3>
+        <p class="text-xs text-[#94A3B8] leading-relaxed">
           Fully autonomous (Level 3+) systems that change MES feeder assignments or issue purchase orders without human
           oversight can shut down cleanrooms and violate ISO/TS compliance.
         </p>
         <div
-          class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] font-mono text-slate-500">
+          class="mt-4 pt-3 border-t border-[#1E293B] flex items-center justify-between text-[11px] font-mono text-[#94A3B8]">
           <span>Governance Mandate</span>
-          <span class="text-purple-600 font-semibold">Level 2 Human Sign-off</span>
+          <span class="text-purple-400 font-semibold">Level 2 Human Sign-off</span>
         </div>
       </div>
     </div>
@@ -346,16 +425,16 @@
   <!-- ============================================================ -->
   <!-- 4. THE SOLUTION: LEVEL 2 AGENTIC AI ARCHITECTURE -->
   <!-- ============================================================ -->
-  <section id="architecture" class="py-16 bg-slate-900 text-white px-4 sm:px-6 lg:px-8 border-y border-slate-800">
+  <section id="architecture" class="py-16 bg-[#0B1220] text-[#F8FAFC] px-4 sm:px-6 lg:px-8 border-y border-[#1E293B]">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="text-xs font-mono font-semibold text-blue-400 uppercase tracking-wider mb-2">Solution Blueprint
+        <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Solution Blueprint
         </div>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#F8FAFC]">
           How Level 2 Agentic AI Solves the Problem
         </h2>
-        <p class="text-slate-400 text-sm mt-3">
-          Our system operates at <span class="text-blue-300 font-semibold">Level 2 Agentic Autonomy</span>: it actively
+        <p class="text-[#94A3B8] text-sm mt-3">
+          Our system operates at <span class="text-cyan-300 font-semibold">Level 2 Agentic Autonomy</span>: it actively
           identifies shortages, formulates practical solutions, and simulates alternatives—but requires formal human
           approval before committing any change to MES.
         </p>
@@ -364,75 +443,75 @@
       <!-- 5-Stage Agentic Pipeline Diagram -->
       <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative mb-12">
         <!-- Stage 1 -->
-        <div class="bg-slate-800/90 rounded border border-slate-700 p-5 relative">
+        <div class="bg-[#111C2E] rounded-xl border border-[#1E293B] p-5 relative shadow-md hover:border-blue-500/40 transition-colors">
           <div class="flex items-center justify-between mb-3">
             <span
-              class="text-[10px] font-mono text-blue-400 font-bold px-2 py-0.5 rounded bg-blue-900/50 border border-blue-500/20">STEP
+              class="text-[10px] font-mono text-cyan-400 font-bold px-2 py-0.5 rounded bg-blue-900/40 border border-cyan-500/30">STEP
               1</span>
-            <span class="material-symbols-outlined text-blue-400 text-[20px]">sensors</span>
+            <span class="material-symbols-outlined text-cyan-400 text-[20px]">sensors</span>
           </div>
-          <h4 class="font-bold text-white text-sm mb-1">Telemetry Ingestion</h4>
-          <p class="text-[11px] text-slate-300 leading-relaxed">
+          <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Telemetry Ingestion</h4>
+          <p class="text-[11px] text-[#94A3B8] leading-relaxed">
             Continuously ingests SAP S/4HANA ERP orders (#PO-94281), 142 MPN inventory records, and SMT line CPH metrics
             from Austin Fab 4.
           </p>
         </div>
 
         <!-- Stage 2 -->
-        <div class="bg-slate-800/90 rounded border border-slate-700 p-5 relative">
+        <div class="bg-[#111C2E] rounded-xl border border-[#1E293B] p-5 relative shadow-md hover:border-amber-500/40 transition-colors">
           <div class="flex items-center justify-between mb-3">
             <span
-              class="text-[10px] font-mono text-amber-400 font-bold px-2 py-0.5 rounded bg-amber-900/50 border border-amber-500/20">STEP
+              class="text-[10px] font-mono text-amber-400 font-bold px-2 py-0.5 rounded bg-amber-900/40 border border-amber-500/30">STEP
               2</span>
             <span class="material-symbols-outlined text-amber-400 text-[20px]">search_check</span>
           </div>
-          <h4 class="font-bold text-white text-sm mb-1">Bottleneck Detection</h4>
-          <p class="text-[11px] text-slate-300 leading-relaxed">
+          <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Bottleneck Detection</h4>
+          <p class="text-[11px] text-[#94A3B8] leading-relaxed">
             Identifies PMIC lead time delay (Oct 14 Ground transit) pushing final product delivery past client deadline
             to Nov 08 (37 days).
           </p>
         </div>
 
         <!-- Stage 3 -->
-        <div class="bg-slate-800/90 rounded border border-slate-700 p-5 relative">
+        <div class="bg-[#111C2E] rounded-xl border border-[#1E293B] p-5 relative shadow-md hover:border-emerald-500/40 transition-colors">
           <div class="flex items-center justify-between mb-3">
             <span
-              class="text-[10px] font-mono text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-900/50 border border-emerald-500/20">STEP
+              class="text-[10px] font-mono text-emerald-400 font-bold px-2 py-0.5 rounded bg-emerald-900/40 border border-emerald-500/30">STEP
               3</span>
             <span class="material-symbols-outlined text-emerald-400 text-[20px]">psychology</span>
           </div>
-          <h4 class="font-bold text-white text-sm mb-1">Agent Reasoning</h4>
-          <p class="text-[11px] text-slate-300 leading-relaxed">
+          <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Agent Reasoning</h4>
+          <p class="text-[11px] text-[#94A3B8] leading-relaxed">
             Multi-LLM engine (OpenAI GPT-4o, Anthropic Claude, Gemini, or Offline Deterministic) synthesizes 4 feasible
             production schedules.
           </p>
         </div>
 
         <!-- Stage 4 -->
-        <div class="bg-slate-800/90 rounded border-2 border-purple-500/60 p-5 relative shadow-lg shadow-purple-900/20">
+        <div class="bg-[#111C2E] rounded-xl border-2 border-purple-500/60 p-5 relative shadow-lg shadow-purple-900/30">
           <div class="flex items-center justify-between mb-3">
             <span
               class="text-[10px] font-mono text-purple-300 font-bold px-2 py-0.5 rounded bg-purple-900/70 border border-purple-400/40">STEP
               4 • GOVERNANCE</span>
             <span class="material-symbols-outlined text-purple-400 text-[20px]">verified</span>
           </div>
-          <h4 class="font-bold text-white text-sm mb-1">Human Approval Gate</h4>
-          <p class="text-[11px] text-slate-300 leading-relaxed">
+          <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Human Approval Gate</h4>
+          <p class="text-[11px] text-[#94A3B8] leading-relaxed">
             Presents side-by-side trade-off matrix. System halts and awaits formal authorization from Chief Operations
             Planner (Dr. C).
           </p>
         </div>
 
         <!-- Stage 5 -->
-        <div class="bg-slate-800/90 rounded border border-slate-700 p-5 relative">
+        <div class="bg-[#111C2E] rounded-xl border border-[#1E293B] p-5 relative shadow-md hover:border-blue-500/40 transition-colors">
           <div class="flex items-center justify-between mb-3">
             <span
-              class="text-[10px] font-mono text-blue-400 font-bold px-2 py-0.5 rounded bg-blue-900/50 border border-blue-500/20">STEP
+              class="text-[10px] font-mono text-cyan-400 font-bold px-2 py-0.5 rounded bg-blue-900/40 border border-blue-500/30">STEP
               5</span>
-            <span class="material-symbols-outlined text-blue-400 text-[20px]">task_alt</span>
+            <span class="material-symbols-outlined text-cyan-400 text-[20px]">task_alt</span>
           </div>
-          <h4 class="font-bold text-white text-sm mb-1">Audit Verification</h4>
-          <p class="text-[11px] text-slate-300 leading-relaxed">
+          <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Audit Verification</h4>
+          <p class="text-[11px] text-[#94A3B8] leading-relaxed">
             Executes changes to MES, re-validates critical paths, verifies zero secondary shortages, and stamps an
             immutable SHA-256 certificate.
           </p>
@@ -440,31 +519,31 @@
       </div>
 
       <!-- Autonomy Level Comparison Table -->
-      <div class="bg-slate-800 rounded-lg p-6 border border-slate-700">
-        <h3 class="text-base font-bold text-white mb-4 flex items-center gap-2">
-          <span class="material-symbols-outlined text-blue-400">tune</span>
+      <div class="bg-[#111C2E] rounded-xl p-6 border border-[#1E293B] shadow-xl">
+        <h3 class="text-base font-bold text-[#F8FAFC] mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-cyan-400">tune</span>
           <span>Why Level 2 Agentic Autonomy is the Gold Standard for Industrial Manufacturing</span>
         </h3>
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs font-mono">
             <thead>
-              <tr class="border-b border-slate-700 text-slate-400">
+              <tr class="border-b border-[#1E293B] text-[#94A3B8]">
                 <th class="pb-2 font-semibold">AUTONOMY LEVEL</th>
                 <th class="pb-2 font-semibold">OPERATIONAL ROLE</th>
                 <th class="pb-2 font-semibold">CHANGE AUTHORITY</th>
                 <th class="pb-2 font-semibold">SAFETY &amp; COMPLIANCE PROFILE</th>
               </tr>
             </thead>
-            <tbody class="divide-y divide-slate-700/60 text-slate-300">
+            <tbody class="divide-y divide-[#1E293B] text-[#94A3B8]">
               <tr>
                 <td class="py-2.5 font-bold text-slate-400">Level 1: Passive Assistant</td>
                 <td class="py-2.5">Chatbot answers queries when asked; no autonomous monitoring.</td>
                 <td class="py-2.5 text-slate-400">Zero Execution Capability</td>
                 <td class="py-2.5 text-slate-400">High human cognitive load; delays caught too late.</td>
               </tr>
-              <tr class="bg-blue-950/40 text-white font-semibold">
-                <td class="py-3 text-blue-300 flex items-center gap-1.5 font-bold">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <tr class="bg-blue-950/50 text-[#F8FAFC] font-semibold border-y border-cyan-500/30">
+                <td class="py-3 text-cyan-300 flex items-center gap-1.5 font-bold">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
                   Level 2: Guided Agentic (AeroCircuit)
                 </td>
                 <td class="py-3 text-slate-200">Autonomous delay detection + schedule simulation + delivery load
@@ -493,14 +572,14 @@
   <!-- ============================================================ -->
   <section id="responsibilities" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider mb-2">Agent Specification &amp;
+      <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Agent Specification &amp;
         Core Capabilities</div>
-      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
         The 7 Grounded AI Agent Responsibilities
       </h2>
-      <p class="text-slate-600 text-sm mt-3">
+      <p class="text-[#94A3B8] text-sm mt-3">
         Every capability is formally specified in <code
-          class="bg-slate-100 text-blue-700 px-1.5 py-0.5 rounded font-mono">AGENTS.md</code> and verified by the
+          class="bg-[#162238] text-cyan-300 px-1.5 py-0.5 rounded border border-[#1E293B] font-mono">AGENTS.md</code> and verified by the
         41-point automated validation test suite. Click each card below to inspect the mathematical and operational
         mechanics.
       </p>
@@ -510,159 +589,159 @@
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- 1 -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span
-              class="w-8 h-8 rounded bg-blue-50 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">01</span>
+              class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">01</span>
             <span
-              class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">detectDelaysAndShortages()</span>
+              class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">detectDelaysAndShortages()</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-sm mb-2">Detect Production Delays &amp; Shortages</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-sm mb-2">Detect Production Delays &amp; Shortages</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Parses 142 MPN bills of materials in real-time. Detects supplier transit gaps and alerts planners before SMT
             line setups commence.
           </p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200/80 text-[11px] font-mono text-slate-700">
-          <span class="text-slate-500">Benchmark Telemetry:</span><br />
-          PMIC TPS65988CR ground transit &rarr; D+8 delay flagged.
+        <div class="bg-[#162238] p-2.5 rounded-lg border border-[#1E293B] text-[11px] font-mono text-slate-200">
+          <span class="text-[#94A3B8]">Benchmark Telemetry:</span><br />
+          PMIC TPS65988CR ground transit &rarr; <span class="text-red-400 font-semibold">D+8 delay flagged</span>.
         </div>
       </div>
 
       <!-- 2 -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span
-              class="w-8 h-8 rounded bg-blue-50 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">02</span>
+              class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">02</span>
             <span
-              class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">analyzeMachineCapacity()</span>
+              class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">analyzeMachineCapacity()</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-sm mb-2">Analyze Machine Capacity &amp; Workload</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-sm mb-2">Analyze Machine Capacity &amp; Workload</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Computes placement tact times and component-per-hour (CPH) speeds across Austin Fab 4 Lines 1-6 (Panasonic
             NPM-D3, ASM Siplace SX2, Fuji NXT III).
           </p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200/80 text-[11px] font-mono text-slate-700">
-          <span class="text-slate-500">Chemical Constraint:</span><br />
-          Enforces 4.0h solder paste dry-out limit to preserve yield.
+        <div class="bg-[#162238] p-2.5 rounded-lg border border-[#1E293B] text-[11px] font-mono text-slate-200">
+          <span class="text-[#94A3B8]">Chemical Constraint:</span><br />
+          Enforces <span class="text-amber-400 font-semibold">4.0h solder paste dry-out limit</span> to preserve yield.
         </div>
       </div>
 
       <!-- 3 -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span
-              class="w-8 h-8 rounded bg-blue-50 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">03</span>
+              class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">03</span>
             <span
-              class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">generateRecommendations()</span>
+              class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">generateRecommendations()</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-sm mb-2">Recommend Practical Schedules</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-sm mb-2">Recommend Practical Schedules</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Synthesizes feasible shift schedules (1, 2, or 3 shifts) and dual-gantry parallelization, escalating
             throughput from 3,125 to 4,550 units/day.
           </p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200/80 text-[11px] font-mono text-slate-700">
-          <span class="text-slate-500">Throughput Lift:</span><br />
-          Parallelizing Line 3 + Line 5 cuts SMT run to 5.5 days.
+        <div class="bg-[#162238] p-2.5 rounded-lg border border-[#1E293B] text-[11px] font-mono text-slate-200">
+          <span class="text-[#94A3B8]">Throughput Lift:</span><br />
+          Parallelizing Line 3 + Line 5 cuts SMT run to <span class="text-cyan-400 font-semibold">5.5 days</span>.
         </div>
       </div>
 
       <!-- 4 -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span
-              class="w-8 h-8 rounded bg-blue-50 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">04</span>
+              class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">04</span>
             <span
-              class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">evaluateDeliveryLoads()</span>
+              class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">evaluateDeliveryLoads()</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-sm mb-2">Evaluate Multimodal Delivery Loads</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-sm mb-2">Evaluate Multimodal Delivery Loads</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Grounded in physical cargo math: 25,000 units &times; 170g + cartons/pallets = 4,250 kg gross weight across
             25 Euro pallets (34.56 m³ volume).
           </p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200/80 text-[11px] font-mono text-slate-700">
-          <span class="text-slate-500">Cost Optimization:</span><br />
-          Phased split load saves $3,030 compared to express air.
+        <div class="bg-[#162238] p-2.5 rounded-lg border border-[#1E293B] text-[11px] font-mono text-slate-200">
+          <span class="text-[#94A3B8]">Cost Optimization:</span><br />
+          Phased split load saves <span class="text-emerald-400 font-semibold">$3,030</span> compared to express air.
         </div>
       </div>
 
       <!-- 5 -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span
-              class="w-8 h-8 rounded bg-blue-50 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">05</span>
+              class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">05</span>
             <span
-              class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">tradeoffMatrix()</span>
+              class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">tradeoffMatrix()</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-sm mb-2">Explain Recommendations &amp; Trade-offs</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-sm mb-2">Explain Recommendations &amp; Trade-offs</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Presents side-by-side alternative matrices (Alternatives A, B, C, D) comparing financial cost, handover
             date, yield risks, and client SLA impact.
           </p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200/80 text-[11px] font-mono text-slate-700">
-          <span class="text-slate-500">Explainable Decisions:</span><br />
+        <div class="bg-[#162238] p-2.5 rounded-lg border border-[#1E293B] text-[11px] font-mono text-slate-200">
+          <span class="text-[#94A3B8]">Explainable Decisions:</span><br />
           Planners review trade-offs with 100% data transparency.
         </div>
       </div>
 
       <!-- 6 -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(34,211,238,0.1)] transition-all flex flex-col justify-between">
         <div>
           <div class="flex items-center justify-between mb-3">
             <span
-              class="w-8 h-8 rounded bg-purple-50 text-purple-700 font-mono font-bold text-xs flex items-center justify-center">06</span>
+              class="w-8 h-8 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-500/30 font-mono font-bold text-xs flex items-center justify-center">06</span>
             <span
-              class="text-[11px] font-mono text-purple-700 bg-purple-50 px-2 py-0.5 rounded border border-purple-200 font-semibold">approveAndExecute()</span>
+              class="text-[11px] font-mono text-purple-300 bg-purple-950/60 px-2 py-0.5 rounded border border-purple-400/30 font-semibold">approveAndExecute()</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-sm mb-2">Human Approval Governance</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-sm mb-2">Human Approval Governance</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Requires human authorization before committing. The system displays a formal Change Request showing exact
             pre/post diffs for Chief Ops (Dr. C).
           </p>
         </div>
-        <div class="bg-slate-50 p-2.5 rounded border border-slate-200/80 text-[11px] font-mono text-slate-700">
-          <span class="text-slate-500">Security Gate:</span><br />
-          Zero autonomous execution without human digital sign-off.
+        <div class="bg-[#162238] p-2.5 rounded-lg border border-[#1E293B] text-[11px] font-mono text-slate-200">
+          <span class="text-[#94A3B8]">Security Gate:</span><br />
+          <span class="text-purple-400 font-semibold">Zero autonomous execution without human digital sign-off.</span>
         </div>
       </div>
 
       <!-- 7 (Spans full width or 3 cols) -->
       <div
-        class="bg-white p-5 rounded-lg border border-slate-200 shadow-sm hover:border-blue-500 transition-all flex flex-col justify-between lg:col-span-3">
+        class="bg-[#111C2E] p-5 rounded-xl border border-[#1E293B] shadow-md hover:border-cyan-400/50 transition-all flex flex-col justify-between lg:col-span-3">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
             <div class="flex items-center gap-2 mb-2">
               <span
-                class="w-8 h-8 rounded bg-blue-50 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">07</span>
+                class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">07</span>
               <span
-                class="text-[11px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">verifyApprovedResults()</span>
-              <h3 class="font-bold text-slate-900 text-sm ml-2">Post-Execution Automated Verification &amp;
+                class="text-[11px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">verifyApprovedResults()</span>
+              <h3 class="font-bold text-[#F8FAFC] text-sm ml-2">Post-Execution Automated Verification &amp;
                 Cryptographic Audit</h3>
             </div>
-            <p class="text-xs text-slate-600 leading-relaxed max-w-4xl">
+            <p class="text-xs text-[#94A3B8] leading-relaxed max-w-4xl">
               Immediately following human approval, the agent recalculates the critical path, checks that secondary
               lines have no feeder clashes, confirms supplier dispatch tracking numbers, and seals the record with a
               cryptographically verifiable SHA-256 audit certificate.
             </p>
           </div>
           <div class="flex items-center gap-3 shrink-0">
-            <div class="bg-slate-100 px-3 py-2 rounded border border-slate-200 font-mono text-[11px] text-slate-700">
-              <span class="text-slate-400">Sample Audit Hash:</span><br />
-              <span class="text-blue-700 font-semibold">e3b0c442...89a3f21</span>
+            <div class="bg-[#162238] px-3 py-2 rounded-lg border border-[#1E293B] font-mono text-[11px] text-slate-200">
+              <span class="text-[#94A3B8]">Sample Audit Hash:</span><br />
+              <span class="text-cyan-400 font-semibold">e3b0c442...89a3f21</span>
             </div>
           </div>
         </div>
@@ -673,89 +752,89 @@
   <!-- ============================================================ -->
   <!-- 6. #PO-94281 PRODUCTION BENCHMARK CASE STUDY -->
   <!-- ============================================================ -->
-  <section id="case-study" class="py-16 bg-white border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+  <section id="case-study" class="py-16 bg-[#080D18] border-t border-[#1E293B] px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider mb-2">Real-World
+        <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Real-World
           Manufacturing Telemetry</div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
           Case Study: Order #PO-94281 (Industrial IoT Gateway Rev C)
         </h2>
-        <p class="text-slate-600 text-sm mt-3">
+        <p class="text-[#94A3B8] text-sm mt-3">
           A concrete production run of <strong>25,000 units</strong> at Austin Fab 4 under Tier-1 Automotive Grade A
           specifications. Comparing the unassisted baseline against the AeroCircuit AI optimized execution.
         </p>
       </div>
 
       <!-- Comparative Telemetry Grid -->
-      <div class="overflow-x-auto rounded-lg border border-slate-200 shadow-sm mb-8">
+      <div class="overflow-x-auto rounded-xl border border-[#1E293B] shadow-2xl mb-8 bg-[#111C2E]">
         <table class="w-full text-left text-xs">
           <thead
-            class="bg-slate-50 text-slate-700 font-semibold border-b border-slate-200 uppercase tracking-wider font-mono text-[11px]">
+            class="bg-[#162238] text-[#94A3B8] font-semibold border-b border-[#1E293B] uppercase tracking-wider font-mono text-[11px]">
             <tr>
               <th class="py-3 px-4">PARAMETER</th>
-              <th class="py-3 px-4 bg-slate-100/70 text-slate-800">UNASSISTED BASELINE (MANUAL)</th>
-              <th class="py-3 px-4 bg-blue-50/70 text-blue-900">AEROCIRCUIT AI (ALTERNATIVE A)</th>
+              <th class="py-3 px-4 bg-[#0B1220]/60 text-slate-300">UNASSISTED BASELINE (MANUAL)</th>
+              <th class="py-3 px-4 bg-blue-950/40 text-cyan-300">AEROCIRCUIT AI (ALTERNATIVE A)</th>
               <th class="py-3 px-4">DELTA / IMPACT</th>
             </tr>
           </thead>
-          <tbody class="divide-y divide-slate-200 font-sans text-slate-700">
+          <tbody class="divide-y divide-[#1E293B] font-sans text-slate-300">
             <!-- Row 1 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">PMIC TI TPS65988CR Arrival</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40 text-red-600 font-medium">Oct 14, 2026 (Ground Transit)
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">PMIC TI TPS65988CR Arrival</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40 text-red-400 font-medium">Oct 14, 2026 (Ground Transit)
               </td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 text-emerald-700 font-semibold">Oct 11, 2026 (Expedited Air
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 text-emerald-400 font-semibold">Oct 11, 2026 (Expedited Air
                 Hub)</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-semibold">-3.0 Days Component Delay</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-400 font-semibold">-3.0 Days Component Delay</td>
             </tr>
             <!-- Row 2 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">SMT Surface Mount Fleet</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40">Line 3 Solo (Panasonic NPM-D3, 3 shifts)</td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 font-semibold text-blue-800">Line 3 + Line 5 (ASM Siplace
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">SMT Surface Mount Fleet</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40">Line 3 Solo (Panasonic NPM-D3, 3 shifts)</td>
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 font-semibold text-cyan-300">Line 3 + Line 5 (ASM Siplace
                 SX2) Dual Parallel</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-semibold">Placement cut from 8.0d to 5.5d</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-400 font-semibold">Placement cut from 8.0d to 5.5d</td>
             </tr>
             <!-- Row 3 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">Daily Placement Throughput</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40">3,125 units / day</td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 font-semibold text-blue-800">4,550 units / day</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-semibold">+1,425 u/d (+45.6% escalation)</td>
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">Daily Placement Throughput</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40">3,125 units / day</td>
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 font-semibold text-cyan-300">4,550 units / day</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-400 font-semibold">+1,425 u/d (+45.6% escalation)</td>
             </tr>
             <!-- Row 4 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">Final Handover Date</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40 text-red-600 font-bold">Nov 08, 2026 (37.0 Calendar Days)
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">Final Handover Date</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40 text-red-400 font-bold">Nov 08, 2026 (37.0 Calendar Days)
               </td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 text-emerald-700 font-bold">Nov 02, 2026 (31.5 Calendar
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 text-emerald-400 font-bold">Nov 02, 2026 (31.5 Calendar
                 Days)</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">-5.5 Calendar Days Saved</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-400 font-bold">-5.5 Calendar Days Saved</td>
             </tr>
             <!-- Row 5 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">Freight Delivery Strategy</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40">Pure Express Courier ($11,450)</td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 font-semibold text-slate-900">Phased Split Load (Air Early
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">Freight Delivery Strategy</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40">Pure Express Courier ($11,450)</td>
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 font-semibold text-[#F8FAFC]">Phased Split Load (Air Early
                 + Ocean Batch)</td>
-              <td class="py-3.5 px-4 font-mono text-emerald-600 font-bold">$3,030 Direct Savings ($8,420 Total)</td>
+              <td class="py-3.5 px-4 font-mono text-emerald-400 font-bold">$3,030 Direct Savings ($8,420 Total)</td>
             </tr>
             <!-- Row 6 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">Cargo Physics Grounding</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40">Approximated container estimate</td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 text-slate-900 font-semibold">4,250 kg • 25 Euro Pallets •
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">Cargo Physics Grounding</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40">Approximated container estimate</td>
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 text-[#F8FAFC] font-semibold">4,250 kg • 25 Euro Pallets •
                 34.56 m³</td>
-              <td class="py-3.5 px-4 font-mono text-blue-600">Exact physical packing calculations</td>
+              <td class="py-3.5 px-4 font-mono text-cyan-400">Exact physical packing calculations</td>
             </tr>
             <!-- Row 7 -->
-            <tr class="hover:bg-slate-50">
-              <td class="py-3.5 px-4 font-semibold text-slate-900">Human Approval Sign-off</td>
-              <td class="py-3.5 px-4 font-mono bg-slate-100/40 text-amber-600">Verbal whiteboard consensus</td>
-              <td class="py-3.5 px-4 font-mono bg-blue-50/30 text-emerald-700 font-semibold">CR-2026-94281 signed by Dr.
+            <tr class="hover:bg-[#162238]/50 transition-colors">
+              <td class="py-3.5 px-4 font-semibold text-[#F8FAFC]">Human Approval Sign-off</td>
+              <td class="py-3.5 px-4 font-mono bg-[#0B1220]/40 text-amber-400">Verbal whiteboard consensus</td>
+              <td class="py-3.5 px-4 font-mono bg-blue-950/20 text-emerald-400 font-semibold">CR-2026-94281 signed by Dr.
                 C (Chief Ops)</td>
-              <td class="py-3.5 px-4 font-mono text-purple-600 font-semibold">SHA-256 Audit Seal Generated</td>
+              <td class="py-3.5 px-4 font-mono text-purple-400 font-semibold">SHA-256 Audit Seal Generated</td>
             </tr>
           </tbody>
         </table>
@@ -763,22 +842,22 @@
 
       <!-- Logistics Pallet & Load Diagram Card -->
       <div
-        class="bg-slate-50 p-6 rounded-lg border border-slate-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg flex flex-col md:flex-row items-center justify-between gap-6">
         <div class="flex items-center gap-4">
-          <div class="w-12 h-12 rounded bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
+          <div class="w-12 h-12 rounded-xl bg-blue-600/20 border border-blue-500/30 text-cyan-400 flex items-center justify-center shrink-0">
             <span class="material-symbols-outlined text-[28px]">pallet</span>
           </div>
           <div>
-            <div class="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider">Validated Physical
+            <div class="text-xs font-mono font-bold text-[#94A3B8] uppercase tracking-wider">Validated Physical
               Constraints</div>
-            <div class="text-base font-bold text-slate-900">4,250 kg Gross Logistics Mass • 25 Euro Pallets</div>
-            <div class="text-xs text-slate-600 mt-0.5">25,000 IoT Gateway units &times; 170g unit tare + 20 units/carton
+            <div class="text-base font-bold text-[#F8FAFC]">4,250 kg Gross Logistics Mass • 25 Euro Pallets</div>
+            <div class="text-xs text-[#94A3B8] mt-0.5">25,000 IoT Gateway units &times; 170g unit tare + 20 units/carton
               (1,250 cartons) + 50 cartons/pallet (25 pallets). Total volume: 34.56 m³.</div>
           </div>
         </div>
         <a href="index.html"
-          class="shrink-0 px-4 py-2 rounded bg-white hover:bg-slate-100 text-slate-800 text-xs font-semibold border border-slate-300 transition-colors shadow-sm flex items-center gap-1.5">
-          <span class="material-symbols-outlined text-[16px]">visibility</span>
+          class="shrink-0 px-4 py-2.5 rounded-lg bg-[#162238] hover:bg-[#1C2A44] text-[#F8FAFC] text-xs font-semibold border border-[#1E293B] transition-colors shadow-sm flex items-center gap-1.5 hover:border-cyan-400/40">
+          <span class="material-symbols-outlined text-[16px] text-cyan-400">visibility</span>
           <span>View in Live Telemetry Console</span>
         </a>
       </div>
@@ -788,38 +867,38 @@
   <!-- ============================================================ -->
   <!-- 7. INTERACTIVE AGENT SANDBOX / LIVE SIMULATOR -->
   <!-- ============================================================ -->
-  <section id="interactive-demo" class="py-16 bg-[#0B1C30] text-white px-4 sm:px-6 lg:px-8 border-y border-slate-800">
+  <section id="interactive-demo" class="py-16 bg-[#080D18] text-[#F8FAFC] px-4 sm:px-6 lg:px-8 border-y border-[#1E293B]">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-10">
-        <div class="text-xs font-mono font-semibold text-blue-400 uppercase tracking-wider mb-2">Hands-on Agent
+        <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Hands-on Agent
           Interaction</div>
-        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#F8FAFC]">
           Interactive Manufacturing Agent Simulator
         </h2>
-        <p class="text-slate-400 text-sm mt-3">
+        <p class="text-[#94A3B8] text-sm mt-3">
           Test drive the Level 2 Manufacturing Planning Agent in your browser. Trigger live delay detection, observe
           failure handling for incomplete data, simulate trade-off generation, and test human approval gating.
         </p>
       </div>
 
       <!-- Simulator Dashboard -->
-      <div class="bg-slate-900 rounded-lg border border-slate-700 shadow-2xl overflow-hidden max-w-5xl mx-auto">
+      <div class="bg-[#0B1220] rounded-xl border border-[#1E293B] shadow-2xl overflow-hidden max-w-5xl mx-auto">
         <!-- Simulator Top Bar -->
         <div
-          class="bg-slate-800/90 px-4 py-3 border-b border-slate-700 flex flex-wrap items-center justify-between gap-3">
+          class="bg-[#111C2E] px-4 py-3 border-b border-[#1E293B] flex flex-wrap items-center justify-between gap-3">
           <div class="flex items-center gap-2">
             <span class="w-3 h-3 rounded-full bg-red-500 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-amber-500 inline-block"></span>
             <span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>
             <span
-              class="ml-2 font-mono text-xs text-slate-300 font-semibold">ManufacturingPlanningAgent::AustinFab4</span>
+              class="ml-2 font-mono text-xs text-[#F8FAFC] font-semibold">ManufacturingPlanningAgent::AustinFab4</span>
           </div>
 
           <!-- Model Switcher Selector -->
           <div class="flex items-center gap-2 text-xs font-mono">
-            <span class="text-slate-400">AI Provider:</span>
+            <span class="text-[#94A3B8]">AI Provider:</span>
             <select id="sim-provider-select" onchange="updateSimProvider()"
-              class="bg-slate-950 text-blue-300 text-xs px-2.5 py-1 rounded border border-slate-700 font-mono focus:outline-none focus:border-blue-500">
+              class="bg-[#080D18] text-cyan-300 text-xs px-2.5 py-1 rounded border border-[#1E293B] font-mono focus:outline-none focus:border-blue-500">
               <option value="builtin">Built-in Deterministic (Offline Level 2)</option>
               <option value="openai">OpenAI GPT-4o Engine</option>
               <option value="anthropic">Anthropic Claude 3.5 Sonnet</option>
@@ -829,34 +908,34 @@
         </div>
 
         <!-- Simulator Action Triggers -->
-        <div class="p-4 bg-slate-800/40 border-b border-slate-800 flex flex-wrap items-center gap-2">
+        <div class="p-4 bg-[#111C2E]/60 border-b border-[#1E293B] flex flex-wrap items-center gap-2">
           <button onclick="runSimScenario('shortage')"
-            class="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm">
+            class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm cursor-pointer">
             <span class="material-symbols-outlined text-[15px]">troubleshoot</span>
             <span>1. Detect Shortages &amp; Analyze Fleet</span>
           </button>
           <button onclick="runSimScenario('matrix')"
-            class="px-3 py-1.5 rounded bg-slate-700 hover:bg-slate-600 text-slate-200 font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors">
-            <span class="material-symbols-outlined text-[15px]">compare_arrows</span>
+            class="px-3 py-1.5 rounded-lg bg-[#162238] hover:bg-[#1C2A44] text-[#F8FAFC] border border-[#1E293B] font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer">
+            <span class="material-symbols-outlined text-[15px] text-cyan-400">compare_arrows</span>
             <span>2. Synthesize Trade-off Matrix</span>
           </button>
           <button onclick="runSimScenario('failure_handling')"
-            class="px-3 py-1.5 rounded bg-amber-600 hover:bg-amber-700 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors">
+            class="px-3 py-1.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer">
             <span class="material-symbols-outlined text-[15px]">warning</span>
             <span>3. Test Incomplete Data Failure Handling</span>
           </button>
           <button onclick="runSimScenario('approval')"
-            class="px-3 py-1.5 rounded bg-purple-600 hover:bg-purple-700 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors">
+            class="px-3 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-500 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors cursor-pointer">
             <span class="material-symbols-outlined text-[15px]">verified_user</span>
             <span>4. Simulate Dr. C Approval &amp; SHA-256</span>
           </button>
           <button onclick="runSimScenario('connector_x')"
-            class="px-3 py-1.5 rounded bg-emerald-700 hover:bg-emerald-600 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm">
+            class="px-3 py-1.5 rounded-lg bg-emerald-700 hover:bg-emerald-600 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-sm cursor-pointer">
             <span class="material-symbols-outlined text-[15px]">school</span>
             <span>5. Test Course Benchmark (Connector-X)</span>
           </button>
           <button onclick="clearSimLog()"
-            class="ml-auto px-2.5 py-1 rounded text-slate-400 hover:text-white font-mono text-xs transition-colors">
+            class="ml-auto px-2.5 py-1 rounded text-[#94A3B8] hover:text-[#F8FAFC] font-mono text-xs transition-colors cursor-pointer">
             Clear Console
           </button>
         </div>
@@ -865,43 +944,43 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 min-h-[380px]">
           <!-- Left: Real-time Terminal Log (7 cols) -->
           <div
-            class="lg:col-span-7 p-4 bg-slate-950 font-mono text-[12px] leading-relaxed overflow-y-auto max-h-[420px] text-slate-300 border-r border-slate-800"
+            class="lg:col-span-7 p-4 bg-[#050811] font-mono text-[12px] leading-relaxed overflow-y-auto max-h-[420px] text-slate-300 border-r border-[#1E293B]"
             id="sim-terminal">
-            <div class="text-slate-500 mb-2">// AeroCircuit Level 2 Manufacturing Planning Agent Ready.</div>
-            <div class="text-slate-500 mb-2">// Loaded specs: #PO-94281 (25,000 units), 142 MPNs, Austin Fab 4 SMT
+            <div class="text-[#94A3B8] mb-2">// AeroCircuit Level 2 Manufacturing Planning Agent Ready.</div>
+            <div class="text-[#94A3B8] mb-2">// Loaded specs: #PO-94281 (25,000 units), 142 MPNs, Austin Fab 4 SMT
               fleet.</div>
             <div class="text-emerald-400">&gt; System initialized in offline deterministic Level 2 mode. Zero plain-text
               secrets required.</div>
-            <div class="text-slate-400 mt-2">&gt; Click any scenario above to trigger the agentic loop...</div>
+            <div class="text-cyan-400 mt-2">&gt; Click any scenario above to trigger the agentic loop...</div>
           </div>
 
           <!-- Right: Structured Agent Decision Card (5 cols) -->
-          <div class="lg:col-span-5 p-5 bg-slate-900 flex flex-col justify-between" id="sim-card-container">
+          <div class="lg:col-span-5 p-5 bg-[#0B1220] flex flex-col justify-between" id="sim-card-container">
             <div>
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-4">
-                <span class="text-xs font-mono font-bold text-slate-400 uppercase tracking-wider">Agent Recommendation
+              <div class="flex items-center justify-between pb-3 border-b border-[#1E293B] mb-4">
+                <span class="text-xs font-mono font-bold text-[#94A3B8] uppercase tracking-wider">Agent Recommendation
                   Card</span>
                 <span id="sim-badge"
-                  class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-900/60 text-blue-300 border border-blue-500/30">IDLE</span>
+                  class="text-[10px] font-mono px-2 py-0.5 rounded bg-blue-900/60 text-cyan-300 border border-cyan-500/30">IDLE</span>
               </div>
 
               <div id="sim-card-content" class="text-xs text-slate-300 space-y-3 font-sans">
-                <p class="text-slate-400 italic">No scenario currently active. Click a button above to run real agent
+                <p class="text-[#94A3B8] italic">No scenario currently active. Click a button above to run real agent
                   reasoning.</p>
                 <div
-                  class="p-3 bg-slate-800/60 rounded border border-slate-700/80 font-mono text-[11px] text-slate-300">
-                  <div class="text-slate-400 mb-1">Target Production Order:</div>
+                  class="p-3 bg-[#111C2E] rounded-lg border border-[#1E293B] font-mono text-[11px] text-slate-300">
+                  <div class="text-[#94A3B8] mb-1">Target Production Order:</div>
                   <div class="text-white font-bold">#PO-94281 • Industrial IoT Gateway Rev C</div>
-                  <div class="text-slate-400 mt-1">Batch Size: 25,000 units • Spec: Tier-1 Auto Grade A</div>
+                  <div class="text-[#94A3B8] mt-1">Batch Size: 25,000 units • Spec: Tier-1 Auto Grade A</div>
                 </div>
               </div>
             </div>
 
             <!-- Action footer -->
-            <div class="pt-4 border-t border-slate-800 mt-4 flex items-center justify-between">
-              <span class="text-[10px] font-mono text-slate-500">Autonomous Level 2 Gatekeeper</span>
+            <div class="pt-4 border-t border-[#1E293B] mt-4 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-[#94A3B8]">Autonomous Level 2 Gatekeeper</span>
               <a href="index.html"
-                class="text-xs font-semibold text-blue-400 hover:text-blue-300 flex items-center gap-1 font-mono">
+                class="text-xs font-semibold text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-mono">
                 <span>Open Full MES Console</span>
                 <span class="material-symbols-outlined text-[14px]">open_in_new</span>
               </a>
@@ -915,34 +994,34 @@
   <!-- ============================================================ -->
   <!-- 8. INTERACTIVE ROI & CAPACITY CALCULATOR -->
   <!-- ============================================================ -->
-  <section id="roi-calculator" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+  <section id="roi-calculator" class="py-16 bg-[#080D18] px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
     <div class="text-center max-w-3xl mx-auto mb-12">
-      <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider mb-2">Financial &amp;
+      <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Financial &amp;
         Operational Impact</div>
-      <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
         Interactive ROI &amp; Capacity Calculator
       </h2>
-      <p class="text-slate-600 text-sm mt-3">
+      <p class="text-[#94A3B8] text-sm mt-3">
         Estimate the financial and schedule impact of implementing Level 2 Agentic AI across your electronic assembly
         lines. Adjust your plant parameters below:
       </p>
     </div>
 
     <!-- Calculator Card -->
-    <div class="bg-white rounded-lg border border-slate-200 shadow-md p-6 sm:p-8 max-w-4xl mx-auto">
+    <div class="bg-[#111C2E] rounded-xl border border-[#1E293B] shadow-2xl p-6 sm:p-8 max-w-4xl mx-auto">
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         <!-- Sliders Column -->
         <div class="space-y-6">
           <!-- Slider 1 -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
+            <div class="flex justify-between text-xs font-semibold text-[#F8FAFC] mb-1.5">
               <span>Monthly Production Volume:</span>
-              <span class="font-mono text-blue-700 text-sm font-bold" id="roi-volume-val">25,000 units</span>
+              <span class="font-mono text-cyan-400 text-sm font-bold" id="roi-volume-val">25,000 units</span>
             </div>
             <input type="range" min="5000" max="100000" step="5000" value="25000" id="roi-volume"
               oninput="calculateRoi()"
-              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" />
-            <div class="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+              class="w-full h-2 bg-[#0B1220] rounded-lg appearance-none cursor-pointer accent-blue-500 border border-[#1E293B]" />
+            <div class="flex justify-between text-[10px] text-[#94A3B8] font-mono mt-1">
               <span>5k units</span>
               <span>50k units</span>
               <span>100k units</span>
@@ -951,13 +1030,13 @@
 
           <!-- Slider 2 -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
+            <div class="flex justify-between text-xs font-semibold text-[#F8FAFC] mb-1.5">
               <span>SMT Fleet Placement Lines:</span>
-              <span class="font-mono text-blue-700 text-sm font-bold" id="roi-lines-val">6 SMT Lines</span>
+              <span class="font-mono text-cyan-400 text-sm font-bold" id="roi-lines-val">6 SMT Lines</span>
             </div>
             <input type="range" min="2" max="16" step="1" value="6" id="roi-lines" oninput="calculateRoi()"
-              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" />
-            <div class="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+              class="w-full h-2 bg-[#0B1220] rounded-lg appearance-none cursor-pointer accent-blue-500 border border-[#1E293B]" />
+            <div class="flex justify-between text-[10px] text-[#94A3B8] font-mono mt-1">
               <span>2 lines</span>
               <span>8 lines</span>
               <span>16 lines</span>
@@ -966,13 +1045,13 @@
 
           <!-- Slider 3 -->
           <div>
-            <div class="flex justify-between text-xs font-semibold text-slate-700 mb-1.5">
+            <div class="flex justify-between text-xs font-semibold text-[#F8FAFC] mb-1.5">
               <span>Expedited Freight Expeditions / Qtr:</span>
-              <span class="font-mono text-blue-700 text-sm font-bold" id="roi-freight-val">4 Expeditions</span>
+              <span class="font-mono text-cyan-400 text-sm font-bold" id="roi-freight-val">4 Expeditions</span>
             </div>
             <input type="range" min="1" max="12" step="1" value="4" id="roi-freight" oninput="calculateRoi()"
-              class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600" />
-            <div class="flex justify-between text-[10px] text-slate-400 font-mono mt-1">
+              class="w-full h-2 bg-[#0B1220] rounded-lg appearance-none cursor-pointer accent-blue-500 border border-[#1E293B]" />
+            <div class="flex justify-between text-[10px] text-[#94A3B8] font-mono mt-1">
               <span>1 rush run</span>
               <span>6 rush runs</span>
               <span>12 rush runs</span>
@@ -981,38 +1060,38 @@
         </div>
 
         <!-- Output Metric Tiles -->
-        <div class="bg-slate-50 p-6 rounded-lg border border-slate-200 space-y-4">
-          <div class="text-xs font-mono font-bold text-slate-500 uppercase tracking-wider mb-2">Projected Annual Savings
+        <div class="bg-[#162238] p-6 rounded-xl border border-[#1E293B] space-y-4">
+          <div class="text-xs font-mono font-bold text-[#94A3B8] uppercase tracking-wider mb-2">Projected Annual Savings
           </div>
 
           <!-- Output 1 -->
-          <div class="bg-white p-3.5 rounded border border-slate-200/90 shadow-sm flex items-center justify-between">
+          <div class="bg-[#111C2E] p-3.5 rounded-lg border border-[#1E293B] shadow-md flex items-center justify-between">
             <div>
-              <div class="text-[11px] text-slate-500">Expedited Freight Savings</div>
-              <div class="text-xl font-bold font-mono text-emerald-600" id="roi-freight-savings">$48,480 / yr</div>
+              <div class="text-[11px] text-[#94A3B8]">Expedited Freight Savings</div>
+              <div class="text-xl font-bold font-mono text-emerald-400" id="roi-freight-savings">$48,480 / yr</div>
             </div>
-            <span class="material-symbols-outlined text-emerald-600 text-[24px]">savings</span>
+            <span class="material-symbols-outlined text-emerald-400 text-[24px]">savings</span>
           </div>
 
           <!-- Output 2 -->
-          <div class="bg-white p-3.5 rounded border border-slate-200/90 shadow-sm flex items-center justify-between">
+          <div class="bg-[#111C2E] p-3.5 rounded-lg border border-[#1E293B] shadow-md flex items-center justify-between">
             <div>
-              <div class="text-[11px] text-slate-500">Lead Time Saved Across Batches</div>
-              <div class="text-xl font-bold font-mono text-blue-700" id="roi-leadtime-savings">22.0 Days / yr</div>
+              <div class="text-[11px] text-[#94A3B8]">Lead Time Saved Across Batches</div>
+              <div class="text-xl font-bold font-mono text-cyan-400" id="roi-leadtime-savings">22.0 Days / yr</div>
             </div>
-            <span class="material-symbols-outlined text-blue-700 text-[24px]">schedule</span>
+            <span class="material-symbols-outlined text-cyan-400 text-[24px]">schedule</span>
           </div>
 
           <!-- Output 3 -->
-          <div class="bg-white p-3.5 rounded border border-slate-200/90 shadow-sm flex items-center justify-between">
+          <div class="bg-[#111C2E] p-3.5 rounded-lg border border-[#1E293B] shadow-md flex items-center justify-between">
             <div>
-              <div class="text-[11px] text-slate-500">Fleet Placement Utilization Gain</div>
-              <div class="text-xl font-bold font-mono text-purple-700" id="roi-utilization-gain">+18.4% Efficiency</div>
+              <div class="text-[11px] text-[#94A3B8]">Fleet Placement Utilization Gain</div>
+              <div class="text-xl font-bold font-mono text-purple-400" id="roi-utilization-gain">+18.4% Efficiency</div>
             </div>
-            <span class="material-symbols-outlined text-purple-700 text-[24px]">speed</span>
+            <span class="material-symbols-outlined text-purple-400 text-[24px]">speed</span>
           </div>
 
-          <div class="text-[10px] font-mono text-slate-400 pt-1 text-center">
+          <div class="text-[10px] font-mono text-[#94A3B8] pt-1 text-center">
             *Ground metrics benchmarked against Austin Fab 4 dual-line parallelization and split load logistics ($3,030
             delta per 25k units).
           </div>
@@ -1024,15 +1103,15 @@
   <!-- ============================================================ -->
   <!-- 9. SECURITY, PRIVACY & MODEL AGNOSTIC ARCHITECTURE -->
   <!-- ============================================================ -->
-  <section id="security" class="py-16 bg-white border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+  <section id="security" class="py-16 bg-[#080D18] border-t border-[#1E293B] px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="text-xs font-mono font-semibold text-blue-700 uppercase tracking-wider mb-2">Enterprise Security
+        <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Enterprise Security
           &amp; Compliance</div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
           Zero Plaintext Secrets &amp; Model Agnostic Hygiene
         </h2>
-        <p class="text-slate-600 text-sm mt-3">
+        <p class="text-[#94A3B8] text-sm mt-3">
           Designed for defense-grade aerospace and Tier-1 automotive cleanrooms. AeroCircuit AI protects proprietary
           manufacturing IP with client-side credential hygiene.
         </p>
@@ -1040,49 +1119,49 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <!-- Security Card 1 -->
-        <div class="p-6 rounded-lg bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded bg-emerald-100 text-emerald-800 flex items-center justify-center mb-4">
+        <div class="p-6 rounded-xl bg-[#111C2E] border border-[#1E293B] shadow-lg hover:border-emerald-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-[24px]">key_off</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-base mb-2">Zero Plaintext Secrets</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-base mb-2">Zero Plaintext Secrets</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Verified by Suite 1 of our automated test suite. API keys are never written to repository files or committed
             to Git. Ephemeral credentials exist only in client browser <code
-              class="bg-white px-1 py-0.5 rounded text-slate-700 font-mono text-[11px]">localStorage</code>.
+              class="bg-[#162238] px-1.5 py-0.5 rounded text-cyan-300 font-mono text-[11px] border border-[#1E293B]">localStorage</code>.
           </p>
           <span
-            class="text-[10px] font-mono text-emerald-700 font-semibold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">TEST
+            class="text-[10px] font-mono text-emerald-400 font-semibold bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">TEST
             SUITE 1 VERIFIED</span>
         </div>
 
         <!-- Security Card 2 -->
-        <div class="p-6 rounded-lg bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded bg-blue-100 text-blue-800 flex items-center justify-center mb-4">
+        <div class="p-6 rounded-xl bg-[#111C2E] border border-[#1E293B] shadow-lg hover:border-blue-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-cyan-400 border border-blue-500/30 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-[24px]">hub</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-base mb-2">Multi-LLM &amp; Offline Mode</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-base mb-2">Multi-LLM &amp; Offline Mode</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Deploy with complete vendor flexibility: switch between OpenAI (GPT-4o, GPT-4o-mini), Anthropic (Claude 3.5
             Sonnet), Google Gemini (1.5 Pro), or run 100% air-gapped with the Built-in Deterministic Engine.
           </p>
           <span
-            class="text-[10px] font-mono text-blue-700 font-semibold bg-blue-50 px-2 py-0.5 rounded border border-blue-200">AIR-GAP
+            class="text-[10px] font-mono text-cyan-300 font-semibold bg-blue-950/60 px-2 py-0.5 rounded border border-blue-500/30">AIR-GAP
             CLEANROOM READY</span>
         </div>
 
         <!-- Security Card 3 -->
-        <div class="p-6 rounded-lg bg-slate-50 border border-slate-200">
-          <div class="w-10 h-10 rounded bg-purple-100 text-purple-800 flex items-center justify-center mb-4">
+        <div class="p-6 rounded-xl bg-[#111C2E] border border-[#1E293B] shadow-lg hover:border-purple-500/40 transition-colors">
+          <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 border border-purple-500/30 flex items-center justify-center mb-4">
             <span class="material-symbols-outlined text-[24px]">verified</span>
           </div>
-          <h3 class="font-bold text-slate-900 text-base mb-2">Cryptographic Audit Trails</h3>
-          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+          <h3 class="font-bold text-[#F8FAFC] text-base mb-2">Cryptographic Audit Trails</h3>
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
             Every human approval generates an immutable SHA-256 seal recording the authorizing officer (Dr. C), affected
             MPNs, machine feeder changes, and re-validated critical paths. Meets ISO 9001 and IATF 16949 audit
             requirements.
           </p>
           <span
-            class="text-[10px] font-mono text-purple-700 font-semibold bg-purple-50 px-2 py-0.5 rounded border border-purple-200">IATF
+            class="text-[10px] font-mono text-purple-300 font-semibold bg-purple-950/60 px-2 py-0.5 rounded border border-purple-400/30">IATF
             16949 COMPLIANT</span>
         </div>
       </div>
@@ -1092,16 +1171,16 @@
   <!-- ============================================================ -->
   <!-- 9.5 FORMAL SOLUTION DESIGN DOCUMENT (LIAI STRATEGY & CHANGE) -->
   <!-- ============================================================ -->
-  <section id="design-document" class="py-16 bg-slate-50 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+  <section id="design-document" class="py-16 bg-[#0B1220] border-t border-[#1E293B] px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <!-- Academic & Course Metadata Banner -->
-      <div class="bg-white rounded-lg p-6 border border-slate-200 shadow-sm mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="bg-[#111C2E] rounded-xl p-6 border border-[#1E293B] shadow-xl mb-12 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-purple-100 text-purple-800 text-[11px] font-mono font-bold uppercase tracking-wider mb-2">
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-purple-950/60 text-purple-300 border border-purple-400/30 text-[11px] font-mono font-bold uppercase tracking-wider mb-2">
             <span>Course Project Specification</span>
           </div>
-          <h2 class="text-2xl font-bold text-slate-900 tracking-tight">Solution Design Document — Manufacturing Planning Agent</h2>
-          <div class="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-slate-600 mt-2 font-mono">
+          <h2 class="text-2xl font-bold text-[#F8FAFC] tracking-tight">Solution Design Document — Manufacturing Planning Agent</h2>
+          <div class="flex flex-wrap items-center gap-x-6 gap-y-1 text-xs text-[#94A3B8] mt-2 font-mono">
             <span><strong>Course:</strong> LIAI – Strategy and Change</span>
             <span><strong>Student:</strong> Mary Chlouie Padios</span>
             <span><strong>Instructor:</strong> Evandro Barros</span>
@@ -1109,11 +1188,11 @@
           </div>
         </div>
         <div class="flex flex-wrap items-center gap-2.5 shrink-0">
-          <a href="assets/downloads/Manufacturing_Planning_Agent_Presentation.pptx" download class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors">
+          <a href="assets/downloads/Manufacturing_Planning_Agent_Presentation.pptx" download class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold shadow-md transition-colors border border-blue-400/30">
             <span class="material-symbols-outlined text-[16px]">slideshow</span>
             <span>Download PPTX</span>
           </a>
-          <a href="assets/downloads/SolutionDesign.pdf" download class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded bg-slate-800 hover:bg-slate-700 text-white text-xs font-semibold shadow-xs transition-colors">
+          <a href="assets/downloads/SolutionDesign.pdf" download class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg bg-[#162238] hover:bg-[#1C2A44] text-[#F8FAFC] text-xs font-semibold shadow-md transition-colors border border-[#1E293B]">
             <span class="material-symbols-outlined text-[16px]">picture_as_pdf</span>
             <span>Download PDF</span>
           </a>
@@ -1123,78 +1202,78 @@
       <!-- Section 4.1 to 4.10 Document Accordion / Content Cards -->
       <div class="space-y-6 max-w-5xl mx-auto">
         <!-- 4.1 Executive Summary -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.1</span>
-            <h3 class="font-bold text-slate-900 text-base">Executive Summary</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.1</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Executive Summary</h3>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed">
+          <p class="text-xs text-[#94A3B8] leading-relaxed">
             Manufacturing planners need to review production orders, material inventory, and deadlines to understand whether a material shortage may affect a production commitment. When these details are checked manually, the planner may need to compare multiple records and contact other teams before deciding what to do. If a shortage is found late, the team may have less time to evaluate options and could face schedule disruption or late delivery. The actual cost and frequency of these problems should be measured during a pilot.
           </p>
-          <p class="text-xs text-slate-600 leading-relaxed mt-2">
-            The proposed <strong>Manufacturing Planning Agent</strong> helps the production planner identify material shortages and potential production delays. It receives production orders, inventory records, and deadlines, uses defined checking tools to compare the information, and can use the OpenAI API to help explain findings and prepare recommendations. The results are shown on a dashboard or as a response message. The agent recommends actions but does not independently make important production changes. The planner remains responsible for reviewing the evidence and approving the next step.
+          <p class="text-xs text-[#94A3B8] leading-relaxed mt-2">
+            The proposed <strong class="text-[#F8FAFC]">Manufacturing Planning Agent</strong> helps the production planner identify material shortages and potential production delays. It receives production orders, inventory records, and deadlines, uses defined checking tools to compare the information, and can use the OpenAI API to help explain findings and prepare recommendations. The results are shown on a dashboard or as a response message. The agent recommends actions but does not independently make important production changes. The planner remains responsible for reviewing the evidence and approving the next step.
           </p>
         </div>
 
         <!-- 4.2 Solution Overview -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.2</span>
-            <h3 class="font-bold text-slate-900 text-base">Solution Overview</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.2</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Solution Overview</h3>
           </div>
-          <div class="text-xs text-slate-600 space-y-2">
-            <div><strong class="text-slate-900">Goal:</strong> Identify material shortages and potential production delays, then recommend possible next steps so the production planner can make an informed decision.</div>
+          <div class="text-xs text-[#94A3B8] space-y-2">
+            <div><strong class="text-[#F8FAFC]">Goal:</strong> Identify material shortages and potential production delays, then recommend possible next steps so the production planner can make an informed decision.</div>
             <div>
-              <strong class="text-slate-900">Scope:</strong> The proposed workflow starts when a user requests a check or enters new manufacturing data; reads production orders, inventory records, and deadlines; checks available quantities against requirements; flags shortages and deadlines at risk; uses the OpenAI API (when configured) to explain findings; displays findings on the dashboard; and requests human review.
+              <strong class="text-[#F8FAFC]">Scope:</strong> The proposed workflow starts when a user requests a check or enters new manufacturing data; reads production orders, inventory records, and deadlines; checks available quantities against requirements; flags shortages and deadlines at risk; uses the OpenAI API (when configured) to explain findings; displays findings on the dashboard; and requests human review.
             </div>
-            <div class="p-3 bg-amber-50 rounded border border-amber-200 text-amber-900 text-[11px] font-mono">
+            <div class="p-3 bg-amber-950/40 rounded-lg border border-amber-500/30 text-amber-200 text-[11px] font-mono">
               <strong>Boundary Guardrail:</strong> The agent does <strong>not</strong> independently change production schedules, update inventory, place purchase orders, or approve substitute materials. Delivery-load optimization is outside the initial classroom scope and can be considered in advanced modules.
             </div>
-            <div><strong class="text-slate-900">Main Users:</strong> Primary user is the Production Planner. Supported by inventory staff, production supervisors, purchasing, quality staff, and IT/security.</div>
+            <div><strong class="text-[#F8FAFC]">Main Users:</strong> Primary user is the Production Planner. Supported by inventory staff, production supervisors, purchasing, quality staff, and IT/security.</div>
           </div>
         </div>
 
         <!-- 4.3 Agent Roster — Agent Card -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-4">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.3</span>
-            <h3 class="font-bold text-slate-900 text-base">Agent Roster — Agent Card</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.3</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Agent Roster — Agent Card</h3>
           </div>
-          <div class="overflow-x-auto rounded border border-slate-200">
+          <div class="overflow-x-auto rounded-lg border border-[#1E293B]">
             <table class="w-full text-left text-xs">
-              <thead class="bg-slate-100 text-slate-700 font-mono uppercase text-[11px]">
+              <thead class="bg-[#162238] text-[#94A3B8] font-mono uppercase text-[11px]">
                 <tr>
-                  <th class="py-2.5 px-3.5 border-b border-slate-200 w-1/4">FIELD</th>
-                  <th class="py-2.5 px-3.5 border-b border-slate-200">SPECIFICATION</th>
+                  <th class="py-2.5 px-3.5 border-b border-[#1E293B] w-1/4">FIELD</th>
+                  <th class="py-2.5 px-3.5 border-b border-[#1E293B]">SPECIFICATION</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-200 font-sans text-slate-700">
+              <tbody class="divide-y divide-[#1E293B] font-sans text-slate-300">
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Name and Role</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Name and Role</td>
                   <td class="py-2.5 px-3.5"><strong>Manufacturing Planning Agent</strong> – identifies material shortages and potential production delays.</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Goal</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Goal</td>
                   <td class="py-2.5 px-3.5">Find production problems and recommend solutions to help avoid delays.</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Input / Trigger</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Input / Trigger</td>
                   <td class="py-2.5 px-3.5">Triggered when a user requests a production check or enters new manufacturing data. Receives production orders, material inventory, and deadlines.</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Tools and Data</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Tools and Data</td>
                   <td class="py-2.5 px-3.5">Sample production data, inventory records, deadlines, data-validation and shortage-checking functions, and an OpenAI API tool for analyzing findings and drafting recommendations.</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Outputs</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Outputs</td>
                   <td class="py-2.5 px-3.5">Identified problems, shortage quantities, potential deadline risks, and recommendations displayed on the dashboard or in a response message.</td>
                 </tr>
-                <tr class="bg-blue-50/50">
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-blue-900">Autonomy Level</td>
-                  <td class="py-2.5 px-3.5 text-blue-900 font-semibold"><strong>Level 2 Agentic AI</strong> – the agent analyzes data and proposes solutions, but requires human approval before important changes. It does not independently execute operational changes.</td>
+                <tr class="bg-blue-950/40">
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-cyan-300">Autonomy Level</td>
+                  <td class="py-2.5 px-3.5 text-cyan-300 font-semibold"><strong>Level 2 Agentic AI</strong> – the agent analyzes data and proposes solutions, but requires human approval before important changes. It does not independently execute operational changes.</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Failure Handling</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Failure Handling</td>
                   <td class="py-2.5 px-3.5">If data is missing, incomplete, inconsistent, or unclear, the system alerts the user and asks for corrected information. If the recommendation is uncertain, it labels uncertainty and asks the planner to verify. It must not make changes without approval.</td>
                 </tr>
               </tbody>
@@ -1203,15 +1282,15 @@
         </div>
 
         <!-- 4.4 Organization of the Agent -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.4</span>
-            <h3 class="font-bold text-slate-900 text-base">Organization of the Agent</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.4</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Organization of the Agent</h3>
           </div>
-          <p class="text-xs text-slate-600 leading-relaxed mb-4">
+          <p class="text-xs text-[#94A3B8] leading-relaxed mb-4">
             This design uses <strong>one main agent with specialized tools</strong>. The Manufacturing Planning Agent coordinates the workflow and uses tools for specific tasks rather than dividing the system into separate uncoordinated agents:
           </p>
-          <div class="bg-slate-900 text-slate-200 p-4 rounded-lg font-mono text-[11px] overflow-x-auto leading-relaxed border border-slate-800">
+          <div class="bg-[#050811] text-cyan-300 p-4 rounded-xl font-mono text-[11px] overflow-x-auto leading-relaxed border border-[#1E293B]">
 User request / new manufacturing data
                  |
                  v
@@ -1242,12 +1321,12 @@ User request / new manufacturing data
         </div>
 
         <!-- 4.5 Step-by-Step Workflow & Connector-X Case -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.5</span>
-            <h3 class="font-bold text-slate-900 text-base">Step-by-Step Workflow &amp; Sample Example</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.5</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Step-by-Step Workflow &amp; Sample Example</h3>
           </div>
-          <ol class="list-decimal list-inside text-xs text-slate-600 space-y-1.5 leading-relaxed mb-4">
+          <ol class="list-decimal list-inside text-xs text-[#94A3B8] space-y-1.5 leading-relaxed mb-4">
             <li>The planner requests a production check or enters updated sample data.</li>
             <li>The agent validates that the required order, inventory, and deadline fields are present.</li>
             <li>The shortage-checking tool compares required material quantities with available inventory.</li>
@@ -1258,83 +1337,83 @@ User request / new manufacturing data
             <li>The prototype does not modify production schedules, inventory, or purchase orders without human sign-off.</li>
           </ol>
 
-          <div class="bg-slate-50 p-4 rounded-lg border border-slate-200">
-            <h4 class="font-bold text-slate-900 text-xs mb-1 font-mono uppercase text-blue-700">Coursework Benchmark: Connector-X Shortage</h4>
-            <p class="text-xs text-slate-600 leading-relaxed">
+          <div class="bg-[#162238] p-4 rounded-xl border border-[#1E293B]">
+            <h4 class="font-bold text-cyan-400 text-xs mb-1 font-mono uppercase">Coursework Benchmark: Connector-X Shortage</h4>
+            <p class="text-xs text-slate-300 leading-relaxed">
               A production order requires <strong>120 units</strong> of Connector-X and the sample inventory shows <strong>75 units</strong>. The shortage checker calculates a shortage of <strong>45 units</strong>. The agent flags the order for review and recommends checking vendor replenishment timing, confirming whether an approved substitute is available, or assessing a schedule adjustment. The system strictly avoids claiming a substitute is suitable unless an authorized source confirms it.
             </p>
           </div>
         </div>
 
         <!-- 4.7 Human-in-the-Loop and Guardrails -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.7</span>
-            <h3 class="font-bold text-slate-900 text-base">Human-in-the-Loop &amp; Operational Guardrails</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.7</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Human-in-the-Loop &amp; Operational Guardrails</h3>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-700">
-            <div class="p-3 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-              <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300">
+            <div class="p-3 bg-[#162238] rounded-lg border border-[#1E293B] flex items-start gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0">check_circle</span>
               <span>Human approval is mandatory before any important operational changes.</span>
             </div>
-            <div class="p-3 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-              <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+            <div class="p-3 bg-[#162238] rounded-lg border border-[#1E293B] flex items-start gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0">check_circle</span>
               <span>The agent must never automatically change schedules, inventory, or purchasing records.</span>
             </div>
-            <div class="p-3 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-              <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+            <div class="p-3 bg-[#162238] rounded-lg border border-[#1E293B] flex items-start gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0">check_circle</span>
               <span>Inventory values, quantities, and deadlines must be visible so planners can verify facts.</span>
             </div>
-            <div class="p-3 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-              <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+            <div class="p-3 bg-[#162238] rounded-lg border border-[#1E293B] flex items-start gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0">check_circle</span>
               <span>Missing or unclear data triggers a warning alert and halts unapproved execution.</span>
             </div>
-            <div class="p-3 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-              <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+            <div class="p-3 bg-[#162238] rounded-lg border border-[#1E293B] flex items-start gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0">check_circle</span>
               <span>The agent must not invent approved substitute materials, supplier dates, or capacity.</span>
             </div>
-            <div class="p-3 bg-slate-50 rounded border border-slate-200 flex items-start gap-2">
-              <span class="material-symbols-outlined text-emerald-600 text-[18px] shrink-0">check_circle</span>
+            <div class="p-3 bg-[#162238] rounded-lg border border-[#1E293B] flex items-start gap-2">
+              <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0">check_circle</span>
               <span>Planners retain complete authority to approve, revise, or reject recommendations.</span>
             </div>
           </div>
         </div>
 
         <!-- 4.8 Evaluation & Proposed Pilot KPIs -->
-        <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
+        <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
           <div class="flex items-center gap-2 mb-3">
-            <span class="w-7 h-7 rounded bg-blue-100 text-blue-700 font-mono font-bold text-xs flex items-center justify-center">4.8</span>
-            <h3 class="font-bold text-slate-900 text-base">Evaluation &amp; Proposed Pilot KPIs</h3>
+            <span class="w-7 h-7 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono font-bold text-xs flex items-center justify-center">4.8</span>
+            <h3 class="font-bold text-[#F8FAFC] text-base">Evaluation &amp; Proposed Pilot KPIs</h3>
           </div>
-          <div class="overflow-x-auto rounded border border-slate-200 mb-4">
+          <div class="overflow-x-auto rounded-lg border border-[#1E293B] mb-4">
             <table class="w-full text-left text-xs">
-              <thead class="bg-slate-100 text-slate-700 font-mono uppercase text-[11px]">
+              <thead class="bg-[#162238] text-[#94A3B8] font-mono uppercase text-[11px]">
                 <tr>
-                  <th class="py-2.5 px-3.5 border-b border-slate-200">KPI</th>
-                  <th class="py-2.5 px-3.5 border-b border-slate-200">HOW TO MEASURE</th>
-                  <th class="py-2.5 px-3.5 border-b border-slate-200">PROPOSED TARGET</th>
+                  <th class="py-2.5 px-3.5 border-b border-[#1E293B]">KPI</th>
+                  <th class="py-2.5 px-3.5 border-b border-[#1E293B]">HOW TO MEASURE</th>
+                  <th class="py-2.5 px-3.5 border-b border-[#1E293B]">PROPOSED TARGET</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-200 text-slate-700">
+              <tbody class="divide-y divide-[#1E293B] text-slate-300">
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Time to identify a shortage</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Time to identify a shortage</td>
                   <td class="py-2.5 px-3.5">Median time from starting a check to seeing the result, compared with manual process</td>
-                  <td class="py-2.5 px-3.5 font-mono text-emerald-700 font-bold">30% lower than baseline</td>
+                  <td class="py-2.5 px-3.5 font-mono text-emerald-400 font-bold">30% lower than baseline</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Shortage detection accuracy</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Shortage detection accuracy</td>
                   <td class="py-2.5 px-3.5">Correct shortage findings divided by all verified test cases</td>
-                  <td class="py-2.5 px-3.5 font-mono text-emerald-700 font-bold">&ge; 95% on verified test set</td>
+                  <td class="py-2.5 px-3.5 font-mono text-emerald-400 font-bold">&ge; 95% on verified test set</td>
                 </tr>
                 <tr>
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-slate-900">Recommendation usefulness</td>
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-[#F8FAFC]">Recommendation usefulness</td>
                   <td class="py-2.5 px-3.5">Percentage of reviewed recommendations judged useful by planners</td>
-                  <td class="py-2.5 px-3.5 font-mono text-emerald-700 font-bold">Initial target 70%</td>
+                  <td class="py-2.5 px-3.5 font-mono text-emerald-400 font-bold">Initial target 70%</td>
                 </tr>
-                <tr class="bg-purple-50/50">
-                  <td class="py-2.5 px-3.5 font-bold font-mono text-purple-900">Human approval compliance</td>
-                  <td class="py-2.5 px-3.5 text-purple-900">Cases with human review before any important operational change</td>
-                  <td class="py-2.5 px-3.5 font-mono text-purple-800 font-bold">100% compliance</td>
+                <tr class="bg-purple-950/40">
+                  <td class="py-2.5 px-3.5 font-bold font-mono text-purple-300">Human approval compliance</td>
+                  <td class="py-2.5 px-3.5 text-purple-300">Cases with human review before any important operational change</td>
+                  <td class="py-2.5 px-3.5 font-mono text-purple-300 font-bold">100% compliance</td>
                 </tr>
               </tbody>
             </table>
@@ -1343,28 +1422,28 @@ User request / new manufacturing data
 
         <!-- 4.9 Organizational Impact & 4.10 Prototype Notes -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
-            <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center gap-1.5">
-              <span class="w-6 h-6 rounded bg-blue-100 text-blue-700 font-mono text-xs flex items-center justify-center font-bold">4.9</span>
+          <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
+            <h4 class="font-bold text-[#F8FAFC] text-sm mb-2 flex items-center gap-1.5">
+              <span class="w-6 h-6 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono text-xs flex items-center justify-center font-bold">4.9</span>
               <span>Organizational Impact &amp; Adoption</span>
             </h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
               The agent reduces time spent gathering and comparing information, freeing planners to focus on exceptions. Change management requires framing the system as decision support, not an unassisted replacement for engineering judgment.
             </p>
-            <div class="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded border border-slate-200">
+            <div class="text-[11px] font-mono text-[#94A3B8] bg-[#162238] p-2.5 rounded-lg border border-[#1E293B]">
               Adoption steps: user training on realistic shortages &bull; gathering feedback on unhelpful advice &bull; scaling only after reliable pilot metrics.
             </div>
           </div>
 
-          <div class="bg-white p-6 rounded-lg border border-slate-200 shadow-xs">
-            <h4 class="font-bold text-slate-900 text-sm mb-2 flex items-center gap-1.5">
-              <span class="w-6 h-6 rounded bg-blue-100 text-blue-700 font-mono text-xs flex items-center justify-center font-bold">4.10</span>
+          <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-lg">
+            <h4 class="font-bold text-[#F8FAFC] text-sm mb-2 flex items-center gap-1.5">
+              <span class="w-6 h-6 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 font-mono text-xs flex items-center justify-center font-bold">4.10</span>
               <span>Prototype Notes &amp; Academic Integrity</span>
             </h4>
-            <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
               This prototype is an educational demonstration developed by <strong>Mary Chlouie Padios</strong> for <strong>LIAI – Strategy and Change</strong> (Georgian College). All claims are grounded in actual testable features and verifiable telemetry.
             </p>
-            <div class="text-[11px] font-mono text-slate-500 bg-slate-50 p-2.5 rounded border border-slate-200">
+            <div class="text-[11px] font-mono text-[#94A3B8] bg-[#162238] p-2.5 rounded-lg border border-[#1E293B]">
               AI Use Statement: AI assistance was used to organize coursework and test the prototype while adhering strictly to academic integrity standards.
             </div>
           </div>
@@ -1376,14 +1455,14 @@ User request / new manufacturing data
   <!-- ============================================================ -->
   <!-- 9.6 EVIDENCE GALLERY & DOWNLOADS CENTER -->
   <!-- ============================================================ -->
-  <section id="evidence-section" class="py-16 bg-white border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+  <section id="evidence-section" class="py-16 bg-[#080D18] border-t border-[#1E293B] px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="text-xs font-mono font-semibold text-emerald-700 uppercase tracking-wider mb-2">Project Artifacts &amp; Evidence</div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Project Artifacts &amp; Evidence</div>
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
           Evidence Gallery &amp; Presentation Downloads
         </h2>
-        <p class="text-slate-600 text-sm mt-3">
+        <p class="text-[#94A3B8] text-sm mt-3">
           Access the original PowerPoint presentation, academic design documents, and genuine prototype screenshots captured directly from the running system.
         </p>
       </div>
@@ -1391,46 +1470,46 @@ User request / new manufacturing data
       <!-- Download Cards Grid -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
         <!-- Download 1 -->
-        <a href="assets/downloads/Manufacturing_Planning_Agent_Presentation.pptx" download class="p-4 rounded-lg bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-400 transition-all flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded bg-red-100 text-red-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <a href="assets/downloads/Manufacturing_Planning_Agent_Presentation.pptx" download class="p-4 rounded-xl bg-[#111C2E] hover:bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 transition-all flex items-center gap-3 group shadow-md">
+          <div class="w-10 h-10 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
             <span class="material-symbols-outlined text-[24px]">slideshow</span>
           </div>
           <div>
-            <div class="text-xs font-bold text-slate-900 group-hover:text-blue-700">Presentation Deck</div>
-            <div class="text-[11px] font-mono text-slate-500">PowerPoint (.pptx) • 424 KB</div>
+            <div class="text-xs font-bold text-[#F8FAFC] group-hover:text-cyan-300">Presentation Deck</div>
+            <div class="text-[11px] font-mono text-[#94A3B8]">PowerPoint (.pptx) • 424 KB</div>
           </div>
         </a>
 
         <!-- Download 2 -->
-        <a href="assets/downloads/SolutionDesign.pdf" download class="p-4 rounded-lg bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-400 transition-all flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded bg-red-100 text-red-600 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <a href="assets/downloads/SolutionDesign.pdf" download class="p-4 rounded-xl bg-[#111C2E] hover:bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 transition-all flex items-center gap-3 group shadow-md">
+          <div class="w-10 h-10 rounded-lg bg-red-500/20 text-red-400 border border-red-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
             <span class="material-symbols-outlined text-[24px]">picture_as_pdf</span>
           </div>
           <div>
-            <div class="text-xs font-bold text-slate-900 group-hover:text-blue-700">Solution Design Document</div>
-            <div class="text-[11px] font-mono text-slate-500">Adobe PDF (.pdf) • 13 KB</div>
+            <div class="text-xs font-bold text-[#F8FAFC] group-hover:text-cyan-300">Solution Design Document</div>
+            <div class="text-[11px] font-mono text-[#94A3B8]">Adobe PDF (.pdf) • 13 KB</div>
           </div>
         </a>
 
         <!-- Download 3 -->
-        <a href="assets/downloads/SolutionDesign.docx" download class="p-4 rounded-lg bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-400 transition-all flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded bg-blue-100 text-blue-700 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <a href="assets/downloads/SolutionDesign.docx" download class="p-4 rounded-xl bg-[#111C2E] hover:bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 transition-all flex items-center gap-3 group shadow-md">
+          <div class="w-10 h-10 rounded-lg bg-blue-500/20 text-cyan-400 border border-blue-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
             <span class="material-symbols-outlined text-[24px]">description</span>
           </div>
           <div>
-            <div class="text-xs font-bold text-slate-900 group-hover:text-blue-700">Design Document (Word)</div>
-            <div class="text-[11px] font-mono text-slate-500">MS Word (.docx) • 42 KB</div>
+            <div class="text-xs font-bold text-[#F8FAFC] group-hover:text-cyan-300">Design Document (Word)</div>
+            <div class="text-[11px] font-mono text-[#94A3B8]">MS Word (.docx) • 42 KB</div>
           </div>
         </a>
 
         <!-- Download 4 -->
-        <a href="assets/downloads/SolutionDesign.md" download class="p-4 rounded-lg bg-slate-50 hover:bg-blue-50/60 border border-slate-200 hover:border-blue-400 transition-all flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded bg-slate-200 text-slate-700 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+        <a href="assets/downloads/SolutionDesign.md" download class="p-4 rounded-xl bg-[#111C2E] hover:bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 transition-all flex items-center gap-3 group shadow-md">
+          <div class="w-10 h-10 rounded-lg bg-slate-800 text-slate-300 border border-slate-700 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
             <span class="material-symbols-outlined text-[24px]">article</span>
           </div>
           <div>
-            <div class="text-xs font-bold text-slate-900 group-hover:text-blue-700">Markdown Specification</div>
-            <div class="text-[11px] font-mono text-slate-500">Source (.md) • 14 KB</div>
+            <div class="text-xs font-bold text-[#F8FAFC] group-hover:text-cyan-300">Markdown Specification</div>
+            <div class="text-[11px] font-mono text-[#94A3B8]">Source (.md) • 14 KB</div>
           </div>
         </a>
       </div>
@@ -1438,29 +1517,29 @@ User request / new manufacturing data
       <!-- Screenshot Showcase Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Screenshot 1 -->
-        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
-          <div class="text-xs font-bold text-slate-900 mb-2 flex items-center justify-between">
+        <div class="bg-[#111C2E] rounded-xl p-4 border border-[#1E293B] shadow-lg">
+          <div class="text-xs font-bold text-[#F8FAFC] mb-2 flex items-center justify-between">
             <span>Genuine Screenshot: Operational Telemetry Console</span>
-            <span class="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 font-semibold">AUSTIN FAB 4</span>
+            <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30 font-semibold">AUSTIN FAB 4</span>
           </div>
-          <div class="rounded border border-slate-300 overflow-hidden shadow-xs bg-slate-900 aspect-video flex items-center justify-center">
+          <div class="rounded-lg border border-[#1E293B] overflow-hidden shadow-md bg-slate-950 aspect-video flex items-center justify-center">
             <img src="assets/input_file_1.png" alt="AeroCircuit AI Operational Telemetry Dashboard" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"/>
           </div>
-          <p class="text-[11px] text-slate-500 mt-2 font-mono">
+          <p class="text-[11px] text-[#94A3B8] mt-2 font-mono">
             Displays live SMT Fleet Lines 1-6, BOM critical path, and copilot agent recommendations for #PO-94281.
           </p>
         </div>
 
         <!-- Screenshot 2 -->
-        <div class="bg-slate-50 rounded-lg p-4 border border-slate-200">
-          <div class="text-xs font-bold text-slate-900 mb-2 flex items-center justify-between">
+        <div class="bg-[#111C2E] rounded-xl p-4 border border-[#1E293B] shadow-lg">
+          <div class="text-xs font-bold text-[#F8FAFC] mb-2 flex items-center justify-between">
             <span>Genuine Screenshot: Verification Telemetry &amp; Evidence</span>
-            <span class="text-[10px] font-mono text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200 font-semibold">AGENT TELEMETRY</span>
+            <span class="text-[10px] font-mono text-cyan-300 bg-blue-950/60 px-2 py-0.5 rounded border border-blue-500/30 font-semibold">AGENT TELEMETRY</span>
           </div>
-          <div class="rounded border border-slate-300 overflow-hidden shadow-xs bg-slate-900 aspect-video flex items-center justify-center">
+          <div class="rounded-lg border border-[#1E293B] overflow-hidden shadow-md bg-slate-950 aspect-video flex items-center justify-center">
             <img src="assets/input_file_0.png" alt="Agent Architecture Telemetry Evidence" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300"/>
           </div>
-          <p class="text-[11px] text-slate-500 mt-2 font-mono">
+          <p class="text-[11px] text-[#94A3B8] mt-2 font-mono">
             Displays agent reasoning trace, failure handling validation, and SHA-256 audit hash confirmation.
           </p>
         </div>
@@ -1471,39 +1550,39 @@ User request / new manufacturing data
   <!-- ============================================================ -->
   <!-- 9.7 CLIENT CONSULTATION & CONTACT FORM -->
   <!-- ============================================================ -->
-  <section id="contact" class="py-16 bg-slate-100/80 border-t border-slate-200 px-4 sm:px-6 lg:px-8">
+  <section id="contact" class="py-16 bg-[#0B1220] border-t border-[#1E293B] px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-100 text-blue-800 text-[11px] font-mono font-bold uppercase tracking-wider mb-2">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+        <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111C2E] text-cyan-300 border border-cyan-500/30 text-[11px] font-mono font-bold uppercase tracking-wider mb-2 shadow-[0_0_15px_rgba(34,211,238,0.15)]">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>Client Engagement &amp; Plant Pilot Consultation</span>
         </div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h2 class="text-2xl sm:text-3xl font-bold text-[#F8FAFC] tracking-tight">
           Connect with Our Manufacturing Planning Team
         </h2>
-        <p class="text-slate-600 text-sm mt-3">
+        <p class="text-[#94A3B8] text-sm mt-3">
           Interested in bringing Level 2 Agentic AI into your electronics assembly facility? Inquire about an exploratory plant pilot, schedule a confidential SMT capacity review, or connect directly with our operations planning team.
         </p>
       </div>
 
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start max-w-6xl mx-auto">
         <!-- Left: Interactive Contact Form (7 cols) -->
-        <div class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-xl border border-slate-200 shadow-sm">
+        <div class="lg:col-span-7 bg-[#111C2E] p-6 sm:p-8 rounded-xl border border-[#1E293B] shadow-2xl">
           <form id="client-contact-form" onsubmit="handleContactSubmit(event)" class="space-y-5">
             <!-- Row 1: Name & Email -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="contact-name" class="block text-xs font-semibold text-slate-700 mb-1">Full Name <span class="text-red-500">*</span></label>
+                <label for="contact-name" class="block text-xs font-semibold text-[#F8FAFC] mb-1">Full Name <span class="text-red-400">*</span></label>
                 <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">person</span>
-                  <input type="text" id="contact-name" required placeholder="e.g. Sarah Jenkins" class="w-full pl-9 pr-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors bg-white font-sans text-slate-800"/>
+                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-[#94A3B8] text-[18px]">person</span>
+                  <input type="text" id="contact-name" required placeholder="e.g. Sarah Jenkins" class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#1E293B] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors bg-[#0B1220] font-sans text-[#F8FAFC]"/>
                 </div>
               </div>
               <div>
-                <label for="contact-email" class="block text-xs font-semibold text-slate-700 mb-1">Work Email <span class="text-red-500">*</span></label>
+                <label for="contact-email" class="block text-xs font-semibold text-[#F8FAFC] mb-1">Work Email <span class="text-red-400">*</span></label>
                 <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">mail</span>
-                  <input type="email" id="contact-email" required placeholder="s.jenkins@aerocircuits.com" class="w-full pl-9 pr-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors bg-white font-sans text-slate-800"/>
+                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-[#94A3B8] text-[18px]">mail</span>
+                  <input type="email" id="contact-email" required placeholder="s.jenkins@aerocircuits.com" class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#1E293B] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors bg-[#0B1220] font-sans text-[#F8FAFC]"/>
                 </div>
               </div>
             </div>
@@ -1511,54 +1590,54 @@ User request / new manufacturing data
             <!-- Row 2: Company & Job Title -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
-                <label for="contact-company" class="block text-xs font-semibold text-slate-700 mb-1">Company / Facility <span class="text-red-500">*</span></label>
+                <label for="contact-company" class="block text-xs font-semibold text-[#F8FAFC] mb-1">Company / Facility <span class="text-red-400">*</span></label>
                 <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">factory</span>
-                  <input type="text" id="contact-company" required placeholder="e.g. Apex Electronics Fab" class="w-full pl-9 pr-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors bg-white font-sans text-slate-800"/>
+                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-[#94A3B8] text-[18px]">factory</span>
+                  <input type="text" id="contact-company" required placeholder="e.g. Apex Electronics Fab" class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#1E293B] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors bg-[#0B1220] font-sans text-[#F8FAFC]"/>
                 </div>
               </div>
               <div>
-                <label for="contact-role" class="block text-xs font-semibold text-slate-700 mb-1">Job Title / Role</label>
+                <label for="contact-role" class="block text-xs font-semibold text-[#F8FAFC] mb-1">Job Title / Role</label>
                 <div class="relative">
-                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">badge</span>
-                  <input type="text" id="contact-role" placeholder="e.g. VP of Operations / Planner" class="w-full pl-9 pr-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors bg-white font-sans text-slate-800"/>
+                  <span class="material-symbols-outlined absolute left-3 top-2.5 text-[#94A3B8] text-[18px]">badge</span>
+                  <input type="text" id="contact-role" placeholder="e.g. VP of Operations / Planner" class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#1E293B] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors bg-[#0B1220] font-sans text-[#F8FAFC]"/>
                 </div>
               </div>
             </div>
 
             <!-- Row 3: Plant Scale Volume -->
             <div>
-              <label for="contact-volume" class="block text-xs font-semibold text-slate-700 mb-1">Estimated Monthly Production Volume</label>
+              <label for="contact-volume" class="block text-xs font-semibold text-[#F8FAFC] mb-1">Estimated Monthly Production Volume</label>
               <div class="relative">
-                <span class="material-symbols-outlined absolute left-3 top-2.5 text-slate-400 text-[18px]">precision_manufacturing</span>
-                <select id="contact-volume" class="w-full pl-9 pr-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors bg-white font-sans text-slate-800 appearance-none">
+                <span class="material-symbols-outlined absolute left-3 top-2.5 text-[#94A3B8] text-[18px]">precision_manufacturing</span>
+                <select id="contact-volume" class="w-full pl-9 pr-3 py-2 text-xs rounded-lg border border-[#1E293B] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors bg-[#0B1220] font-sans text-[#F8FAFC] appearance-none">
                   <option value="10k">Pilot Stage (&lt; 10,000 units / month)</option>
                   <option value="25k" selected>Mid Volume (10,000 – 50,000 units / month • e.g. #PO-94281 scale)</option>
                   <option value="100k">High Volume (50,000 – 200,000 units / month)</option>
                   <option value="enterprise">Multi-Plant Enterprise (&gt; 200,000 units / month)</option>
                 </select>
-                <span class="material-symbols-outlined absolute right-3 top-2.5 text-slate-400 text-[18px] pointer-events-none">expand_more</span>
+                <span class="material-symbols-outlined absolute right-3 top-2.5 text-[#94A3B8] text-[18px] pointer-events-none">expand_more</span>
               </div>
             </div>
 
             <!-- Row 4: Primary Interests Checkboxes -->
             <div>
-              <label class="block text-xs font-semibold text-slate-700 mb-2">Primary Operational Interests (Select all that apply)</label>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-700">
-                <label class="flex items-center gap-2 p-2 rounded bg-slate-50 border border-slate-200 hover:bg-blue-50/50 cursor-pointer transition-colors">
-                  <input type="checkbox" name="interest" value="bom-shortages" checked class="rounded text-blue-600 focus:ring-blue-500 accent-blue-600"/>
+              <label class="block text-xs font-semibold text-[#F8FAFC] mb-2">Primary Operational Interests (Select all that apply)</label>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-slate-300">
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 cursor-pointer transition-colors">
+                  <input type="checkbox" name="interest" value="bom-shortages" checked class="rounded text-blue-500 focus:ring-blue-500 accent-blue-600"/>
                   <span>BOM Shortage Detection &amp; Buffer Monitoring</span>
                 </label>
-                <label class="flex items-center gap-2 p-2 rounded bg-slate-50 border border-slate-200 hover:bg-blue-50/50 cursor-pointer transition-colors">
-                  <input type="checkbox" name="interest" value="smt-fleet" checked class="rounded text-blue-600 focus:ring-blue-500 accent-blue-600"/>
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 cursor-pointer transition-colors">
+                  <input type="checkbox" name="interest" value="smt-fleet" checked class="rounded text-blue-500 focus:ring-blue-500 accent-blue-600"/>
                   <span>SMT Fleet Scheduling &amp; Tact Balancing</span>
                 </label>
-                <label class="flex items-center gap-2 p-2 rounded bg-slate-50 border border-slate-200 hover:bg-blue-50/50 cursor-pointer transition-colors">
-                  <input type="checkbox" name="interest" value="split-load" class="rounded text-blue-600 focus:ring-blue-500 accent-blue-600"/>
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 cursor-pointer transition-colors">
+                  <input type="checkbox" name="interest" value="split-load" class="rounded text-blue-500 focus:ring-blue-500 accent-blue-600"/>
                   <span>Multimodal Freight &amp; Split-Load Savings</span>
                 </label>
-                <label class="flex items-center gap-2 p-2 rounded bg-slate-50 border border-slate-200 hover:bg-blue-50/50 cursor-pointer transition-colors">
-                  <input type="checkbox" name="interest" value="level2-pilot" class="rounded text-blue-600 focus:ring-blue-500 accent-blue-600"/>
+                <label class="flex items-center gap-2 p-2.5 rounded-lg bg-[#162238] border border-[#1E293B] hover:border-cyan-400/40 cursor-pointer transition-colors">
+                  <input type="checkbox" name="interest" value="level2-pilot" class="rounded text-blue-500 focus:ring-blue-500 accent-blue-600"/>
                   <span>Level 2 AI Human-in-the-Loop Pilot</span>
                 </label>
               </div>
@@ -1566,48 +1645,48 @@ User request / new manufacturing data
 
             <!-- Row 5: Message -->
             <div>
-              <label for="contact-message" class="block text-xs font-semibold text-slate-700 mb-1">Project Notes / Existing ERP &amp; SMT Setup</label>
-              <textarea id="contact-message" rows="3" placeholder="Tell us about your SMT lines (e.g. Panasonic, Fuji, ASM), ERP (SAP S/4HANA, Opcenter), or specific component bottlenecks you are facing..." class="w-full px-3 py-2 text-xs rounded border border-slate-300 focus:outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition-colors bg-white font-sans text-slate-800 leading-relaxed"></textarea>
+              <label for="contact-message" class="block text-xs font-semibold text-[#F8FAFC] mb-1">Project Notes / Existing ERP &amp; SMT Setup</label>
+              <textarea id="contact-message" rows="3" placeholder="Tell us about your SMT lines (e.g. Panasonic, Fuji, ASM), ERP (SAP S/4HANA, Opcenter), or specific component bottlenecks you are facing..." class="w-full px-3 py-2 text-xs rounded-lg border border-[#1E293B] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors bg-[#0B1220] font-sans text-[#F8FAFC] leading-relaxed"></textarea>
             </div>
 
             <!-- Submit Button -->
             <div class="pt-2">
-              <button type="submit" id="contact-submit-btn" class="w-full py-3 px-4 rounded bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs transition-all shadow-md hover:shadow-blue-500/20 flex items-center justify-center gap-2 cursor-pointer">
+              <button type="submit" id="contact-submit-btn" class="w-full py-3 px-4 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs transition-all shadow-lg hover:shadow-blue-500/30 flex items-center justify-center gap-2 cursor-pointer border border-blue-400/30">
                 <span class="material-symbols-outlined text-[18px]">send</span>
                 <span>Submit Client Consultation Request</span>
               </button>
             </div>
 
             <!-- Submission Success Alert -->
-            <div id="contact-success-alert" class="hidden p-4 rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-xs shadow-sm">
-              <div class="flex items-center gap-2 font-bold mb-1">
-                <span class="material-symbols-outlined text-emerald-600 text-[18px]">check_circle</span>
+            <div id="contact-success-alert" class="hidden p-4 rounded-xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 text-xs shadow-lg">
+              <div class="flex items-center gap-2 font-bold mb-1 text-emerald-300">
+                <span class="material-symbols-outlined text-emerald-400 text-[18px]">check_circle</span>
                 <span>Consultation Request Confirmed!</span>
               </div>
-              <p class="text-[11px] text-emerald-800 leading-relaxed">
-                Thank you! Your inquiry has been received and logged under reference <strong id="contact-ref-id" class="font-mono">#INQ-94281</strong>. Our Chief Operations Planning team will follow up within 4 business hours.
+              <p class="text-[11px] text-emerald-200/90 leading-relaxed">
+                Thank you! Your inquiry has been received and logged under reference <strong id="contact-ref-id" class="font-mono text-cyan-300">#INQ-94281</strong>. Our Chief Operations Planning team will follow up within 4 business hours.
               </p>
-              <div class="mt-2.5 pt-2 border-t border-emerald-200/80 flex flex-wrap items-center justify-between text-[11px] font-mono text-emerald-800 gap-2">
+              <div class="mt-2.5 pt-2 border-t border-emerald-500/30 flex flex-wrap items-center justify-between text-[11px] font-mono text-emerald-300 gap-2">
                 <div class="flex items-center gap-1.5">
-                  <span class="material-symbols-outlined text-[14px] text-emerald-600">calendar_clock</span>
-                  <span>Contact Date: <strong id="contact-timestamp" class="text-emerald-950 font-bold"></strong></span>
+                  <span class="material-symbols-outlined text-[14px] text-emerald-400">calendar_clock</span>
+                  <span>Contact Date: <strong id="contact-timestamp" class="text-[#F8FAFC] font-bold"></strong></span>
                 </div>
                 <div class="flex items-center gap-2">
-                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-emerald-600">database</span> <strong id="contact-storage-badge" class="px-1.5 py-0.5 rounded bg-emerald-200/70 text-emerald-900">Cloudflare D1 SQLite</strong></span>
-                  <span id="contact-status-badge" class="px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-300 font-bold">D1 Persisted</span>
+                  <span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px] text-emerald-400">database</span> <strong id="contact-storage-badge" class="px-1.5 py-0.5 rounded bg-emerald-900/60 text-emerald-200 border border-emerald-500/30">Cloudflare D1 SQLite</strong></span>
+                  <span id="contact-status-badge" class="px-1.5 py-0.5 rounded bg-emerald-900/60 text-emerald-200 border border-emerald-400/40 font-bold">D1 Persisted</span>
                 </div>
               </div>
             </div>
 
             <!-- Alternative Direct Email & Inquiry Manager Bar -->
-            <div class="flex flex-wrap items-center justify-between pt-2 border-t border-slate-100 text-[11px] text-slate-500 gap-2">
-              <a href="mailto:contact@aerocircuit-ai.com?subject=AeroCircuit%20AI%20Plant%20Pilot%20Inquiry" class="text-blue-600 hover:text-blue-800 flex items-center gap-1 font-medium transition-colors">
+            <div class="flex flex-wrap items-center justify-between pt-2 border-t border-[#1E293B] text-[11px] text-[#94A3B8] gap-2">
+              <a href="mailto:contact@aerocircuit-ai.com?subject=AeroCircuit%20AI%20Plant%20Pilot%20Inquiry" class="text-cyan-400 hover:text-cyan-300 flex items-center gap-1 font-medium transition-colors">
                 <span class="material-symbols-outlined text-[14px]">outgoing_mail</span>
                 <span>Prefer direct email? Contact operations team directly</span>
               </a>
-              <button type="button" onclick="openLeadsModal()" class="text-slate-500 hover:text-slate-800 flex items-center gap-1 font-mono transition-colors cursor-pointer bg-slate-100 px-2 py-1 rounded border border-slate-200">
-                <span class="material-symbols-outlined text-[13px]">inventory_2</span>
-                <span>Submissions: <strong id="inquiry-count" class="text-blue-600 font-bold">0</strong></span>
+              <button type="button" onclick="openLeadsModal()" class="text-[#94A3B8] hover:text-[#F8FAFC] flex items-center gap-1 font-mono transition-colors cursor-pointer bg-[#162238] px-2.5 py-1 rounded-lg border border-[#1E293B]">
+                <span class="material-symbols-outlined text-[13px] text-cyan-400">inventory_2</span>
+                <span>Submissions: <strong id="inquiry-count" class="text-cyan-300 font-bold">0</strong></span>
               </button>
             </div>
           </form>
@@ -1616,49 +1695,49 @@ User request / new manufacturing data
         <!-- Right: Plant Advisory Sidecard (5 cols) -->
         <div class="lg:col-span-5 space-y-5">
           <!-- Card 1: Direct Operations Contact -->
-          <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm">
-            <h3 class="font-bold text-slate-900 text-sm mb-3 flex items-center gap-2">
-              <span class="material-symbols-outlined text-blue-600 text-[20px]">support_agent</span>
+          <div class="bg-[#111C2E] p-6 rounded-xl border border-[#1E293B] shadow-2xl">
+            <h3 class="font-bold text-[#F8FAFC] text-sm mb-3 flex items-center gap-2">
+              <span class="material-symbols-outlined text-cyan-400 text-[20px]">support_agent</span>
               <span>Direct Engineering Contact</span>
             </h3>
-            <div class="space-y-3 text-xs text-slate-600">
+            <div class="space-y-3 text-xs text-[#94A3B8]">
               <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-slate-400 text-[18px] shrink-0 mt-0.5">location_on</span>
+                <span class="material-symbols-outlined text-cyan-400 text-[18px] shrink-0 mt-0.5">location_on</span>
                 <div>
-                  <div class="font-semibold text-slate-900">Austin Fab 4 Technology Center</div>
-                  <div class="text-[11px] text-slate-500">Texas, USA • Cleanroom Bay 7</div>
+                  <div class="font-semibold text-[#F8FAFC]">Austin Fab 4 Technology Center</div>
+                  <div class="text-[11px] text-[#94A3B8]">Texas, USA • Cleanroom Bay 7</div>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-slate-400 text-[18px] shrink-0 mt-0.5">schedule</span>
+                <span class="material-symbols-outlined text-cyan-400 text-[18px] shrink-0 mt-0.5">schedule</span>
                 <div>
-                  <div class="font-semibold text-slate-900">Guaranteed Response Window</div>
-                  <div class="text-[11px] text-slate-500">Under 4 business hours for operational inquiries</div>
+                  <div class="font-semibold text-[#F8FAFC]">Guaranteed Response Window</div>
+                  <div class="text-[11px] text-[#94A3B8]">Under 4 business hours for operational inquiries</div>
                 </div>
               </div>
               <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-slate-400 text-[18px] shrink-0 mt-0.5">verified_user</span>
+                <span class="material-symbols-outlined text-emerald-400 text-[18px] shrink-0 mt-0.5">verified_user</span>
                 <div>
-                  <div class="font-semibold text-slate-900">Defense &amp; Automotive Compliance</div>
-                  <div class="text-[11px] text-slate-500">Zero plaintext secrets • Air-gap ready • IATF 16949 / ISO 9001</div>
+                  <div class="font-semibold text-[#F8FAFC]">Defense &amp; Automotive Compliance</div>
+                  <div class="text-[11px] text-[#94A3B8]">Zero plaintext secrets • Air-gap ready • IATF 16949 / ISO 9001</div>
                 </div>
               </div>
             </div>
           </div>
 
           <!-- Card 2: Pilot Protocol Brief -->
-          <div class="bg-blue-900 text-white p-6 rounded-xl border border-blue-800 shadow-md">
+          <div class="bg-[#162238] text-white p-6 rounded-xl border border-blue-500/40 shadow-2xl">
             <div class="flex items-center justify-between mb-3">
-              <span class="text-[10px] font-mono text-blue-300 font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-800/80 border border-blue-600/30">PILOT PROGRAM</span>
+              <span class="text-[10px] font-mono text-cyan-300 font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-900/50 border border-cyan-400/30">PILOT PROGRAM</span>
               <span class="material-symbols-outlined text-emerald-400 text-[20px]">bolt</span>
             </div>
-            <h4 class="font-bold text-white text-sm mb-1.5">Zero-Disruption Plant Pilot</h4>
-            <p class="text-xs text-blue-200 leading-relaxed mb-3">
+            <h4 class="font-bold text-[#F8FAFC] text-sm mb-1.5">Zero-Disruption Plant Pilot</h4>
+            <p class="text-xs text-[#94A3B8] leading-relaxed mb-3">
               We deploy the Level 2 Manufacturing Planning Agent in parallel shadow mode alongside your existing ERP/MES. Evaluate detection accuracy and lead-time gains with zero interference to active line shifts.
             </p>
-            <div class="pt-3 border-t border-blue-800/80 flex items-center justify-between text-[11px] font-mono text-blue-300">
+            <div class="pt-3 border-t border-[#1E293B] flex items-center justify-between text-[11px] font-mono text-cyan-300">
               <span>Setup Timeline:</span>
-              <span class="text-white font-bold">&lt; 48 Hours</span>
+              <span class="text-[#F8FAFC] font-bold">&lt; 48 Hours</span>
             </div>
           </div>
         </div>
@@ -1669,14 +1748,14 @@ User request / new manufacturing data
   <!-- ============================================================ -->
   <!-- 10. LAUNCH CENTER & APPLICATION NAVIGATION TILES -->
   <!-- ============================================================ -->
-  <section class="py-16 bg-[#0F172A] text-white px-4 sm:px-6 lg:px-8 border-t border-slate-800">
+  <section class="py-16 bg-[#080D18] text-[#F8FAFC] px-4 sm:px-6 lg:px-8 border-t border-[#1E293B]">
     <div class="max-w-7xl mx-auto text-center mb-10">
-      <div class="text-xs font-mono font-semibold text-blue-400 uppercase tracking-wider mb-2">Direct Operational Access
+      <div class="text-xs font-mono font-semibold text-cyan-400 uppercase tracking-wider mb-2">Direct Operational Access
       </div>
-      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#F8FAFC]">
         Explore the 6 Live Operational Views
       </h2>
-      <p class="text-slate-400 text-sm mt-3 max-w-2xl mx-auto">
+      <p class="text-[#94A3B8] text-sm mt-3 max-w-2xl mx-auto">
         AeroCircuit AI features six purpose-built operational interfaces. Click any tile below to launch directly into
         the live production management environment:
       </p>
@@ -1686,28 +1765,28 @@ User request / new manufacturing data
     <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
       <!-- View 1 -->
       <a href="index.html#planner"
-        class="group bg-slate-800/80 hover:bg-slate-800 p-5 rounded-lg border border-slate-700 hover:border-blue-500 transition-all text-left">
+        class="group bg-[#111C2E] hover:bg-[#162238] p-5 rounded-xl border border-[#1E293B] hover:border-cyan-400/40 transition-all text-left shadow-lg">
         <div class="flex items-center justify-between mb-3">
           <div
-            class="w-8 h-8 rounded bg-blue-600/30 text-blue-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+            class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
             <span class="material-symbols-outlined text-[18px]">smart_toy</span>
           </div>
           <span
-            class="text-[10px] font-mono text-blue-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
+            class="text-[10px] font-mono text-cyan-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
             <span>Launch</span>&rarr;
           </span>
         </div>
-        <h4 class="font-bold text-white text-sm mb-1">Master Production Planner</h4>
-        <p class="text-[11px] text-slate-300">Interactive Gantt timeline, SMT critical path visualizer, and copilot
+        <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Master Production Planner</h4>
+        <p class="text-[11px] text-[#94A3B8]">Interactive Gantt timeline, SMT critical path visualizer, and copilot
           agent recommendations.</p>
       </a>
 
       <!-- View 2 -->
       <a href="index.html#bom"
-        class="group bg-slate-800/80 hover:bg-slate-800 p-5 rounded-lg border border-slate-700 hover:border-blue-500 transition-all text-left">
+        class="group bg-[#111C2E] hover:bg-[#162238] p-5 rounded-xl border border-[#1E293B] hover:border-amber-400/40 transition-all text-left shadow-lg">
         <div class="flex items-center justify-between mb-3">
           <div
-            class="w-8 h-8 rounded bg-amber-600/30 text-amber-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+            class="w-8 h-8 rounded-lg bg-amber-600/20 text-amber-300 border border-amber-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
             <span class="material-symbols-outlined text-[18px]">table_view</span>
           </div>
           <span
@@ -1715,17 +1794,17 @@ User request / new manufacturing data
             <span>Launch</span>&rarr;
           </span>
         </div>
-        <h4 class="font-bold text-white text-sm mb-1">BOM &amp; Procurement Matrix</h4>
-        <p class="text-[11px] text-slate-300">142 MPN catalog with live lead-time monitors, buffer status, and tier-1
+        <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">BOM &amp; Procurement Matrix</h4>
+        <p class="text-[11px] text-[#94A3B8]">142 MPN catalog with live lead-time monitors, buffer status, and tier-1
           vendor tracking.</p>
       </a>
 
       <!-- View 3 -->
       <a href="index.html#smt"
-        class="group bg-slate-800/80 hover:bg-slate-800 p-5 rounded-lg border border-slate-700 hover:border-blue-500 transition-all text-left">
+        class="group bg-[#111C2E] hover:bg-[#162238] p-5 rounded-xl border border-[#1E293B] hover:border-emerald-400/40 transition-all text-left shadow-lg">
         <div class="flex items-center justify-between mb-3">
           <div
-            class="w-8 h-8 rounded bg-emerald-600/30 text-emerald-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+            class="w-8 h-8 rounded-lg bg-emerald-600/20 text-emerald-300 border border-emerald-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
             <span class="material-symbols-outlined text-[18px]">developer_board</span>
           </div>
           <span
@@ -1733,17 +1812,17 @@ User request / new manufacturing data
             <span>Launch</span>&rarr;
           </span>
         </div>
-        <h4 class="font-bold text-white text-sm mb-1">SMT Surface Mount Fleet</h4>
-        <p class="text-[11px] text-slate-300">Austin Fab 4 Lines 1-6 telemetry, shift simulator, tact balancing, and
+        <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">SMT Surface Mount Fleet</h4>
+        <p class="text-[11px] text-[#94A3B8]">Austin Fab 4 Lines 1-6 telemetry, shift simulator, tact balancing, and
           4.0h solder paste dry-out clock.</p>
       </a>
 
       <!-- View 4 -->
       <a href="index.html#qa"
-        class="group bg-slate-800/80 hover:bg-slate-800 p-5 rounded-lg border border-slate-700 hover:border-blue-500 transition-all text-left">
+        class="group bg-[#111C2E] hover:bg-[#162238] p-5 rounded-xl border border-[#1E293B] hover:border-red-400/40 transition-all text-left shadow-lg">
         <div class="flex items-center justify-between mb-3">
           <div
-            class="w-8 h-8 rounded bg-red-600/30 text-red-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+            class="w-8 h-8 rounded-lg bg-red-600/20 text-red-300 border border-red-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
             <span class="material-symbols-outlined text-[18px]">flaky</span>
           </div>
           <span
@@ -1751,35 +1830,35 @@ User request / new manufacturing data
             <span>Launch</span>&rarr;
           </span>
         </div>
-        <h4 class="font-bold text-white text-sm mb-1">In-Line AOI &amp; Functional QA</h4>
-        <p class="text-[11px] text-slate-300">Koh Young 3D AOI, Keysight 3070 ICT testing, and Thermotron ESS
+        <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">In-Line AOI &amp; Functional QA</h4>
+        <p class="text-[11px] text-[#94A3B8]">Koh Young 3D AOI, Keysight 3070 ICT testing, and Thermotron ESS
           environmental stress chamber.</p>
       </a>
 
       <!-- View 5 -->
       <a href="index.html#logistics"
-        class="group bg-slate-800/80 hover:bg-slate-800 p-5 rounded-lg border border-slate-700 hover:border-blue-500 transition-all text-left">
+        class="group bg-[#111C2E] hover:bg-[#162238] p-5 rounded-xl border border-[#1E293B] hover:border-cyan-400/40 transition-all text-left shadow-lg">
         <div class="flex items-center justify-between mb-3">
           <div
-            class="w-8 h-8 rounded bg-blue-600/30 text-blue-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+            class="w-8 h-8 rounded-lg bg-blue-600/20 text-cyan-300 border border-blue-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
             <span class="material-symbols-outlined text-[18px]">local_shipping</span>
           </div>
           <span
-            class="text-[10px] font-mono text-blue-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
+            class="text-[10px] font-mono text-cyan-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
             <span>Launch</span>&rarr;
           </span>
         </div>
-        <h4 class="font-bold text-white text-sm mb-1">Logistics &amp; Expedited Dispatch</h4>
-        <p class="text-[11px] text-slate-300">Multimodal freight comparison, 25 Euro pallet load viewer, and split load
+        <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Logistics &amp; Expedited Dispatch</h4>
+        <p class="text-[11px] text-[#94A3B8]">Multimodal freight comparison, 25 Euro pallet load viewer, and split load
           cost calculation.</p>
       </a>
 
       <!-- View 6 -->
       <a href="index.html#twin"
-        class="group bg-slate-800/80 hover:bg-slate-800 p-5 rounded-lg border border-slate-700 hover:border-blue-500 transition-all text-left">
+        class="group bg-[#111C2E] hover:bg-[#162238] p-5 rounded-xl border border-[#1E293B] hover:border-purple-400/40 transition-all text-left shadow-lg">
         <div class="flex items-center justify-between mb-3">
           <div
-            class="w-8 h-8 rounded bg-purple-600/30 text-purple-300 flex items-center justify-center group-hover:scale-110 transition-transform">
+            class="w-8 h-8 rounded-lg bg-purple-600/20 text-purple-300 border border-purple-500/30 flex items-center justify-center group-hover:scale-110 transition-transform">
             <span class="material-symbols-outlined text-[18px]">view_in_ar</span>
           </div>
           <span
@@ -1787,8 +1866,8 @@ User request / new manufacturing data
             <span>Launch</span>&rarr;
           </span>
         </div>
-        <h4 class="font-bold text-white text-sm mb-1">Austin Fab 4 Digital Twin</h4>
-        <p class="text-[11px] text-slate-300">ISO 7 cleanroom telemetry, 7 shop-floor bays, and AGV autonomous material
+        <h4 class="font-bold text-[#F8FAFC] text-sm mb-1">Austin Fab 4 Digital Twin</h4>
+        <p class="text-[11px] text-[#94A3B8]">ISO 7 cleanroom telemetry, 7 shop-floor bays, and AGV autonomous material
           handling status.</p>
       </a>
     </div>
@@ -1796,7 +1875,7 @@ User request / new manufacturing data
     <!-- Launch CTA Bar -->
     <div class="mt-12 text-center">
       <a href="index.html"
-        class="inline-flex items-center gap-3 px-8 py-4 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold text-base shadow-xl hover:shadow-blue-500/30 transition-all">
+        class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-base shadow-xl hover:shadow-blue-500/40 transition-all border border-blue-400/40">
         <span class="material-symbols-outlined text-[22px]">rocket_launch</span>
         <span>Enter AeroCircuit AI Production Operations Console</span>
         <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
@@ -1807,23 +1886,23 @@ User request / new manufacturing data
   <!-- ============================================================ -->
   <!-- 11. FOOTER -->
   <!-- ============================================================ -->
-  <footer class="bg-[#0B1C30] text-slate-400 py-10 px-4 sm:px-6 lg:px-8 border-t border-slate-800 text-xs font-mono">
+  <footer class="bg-[#0B1220] text-[#94A3B8] py-10 px-4 sm:px-6 lg:px-8 border-t border-[#1E293B] text-xs font-mono">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
       <div class="flex items-center gap-3">
         <div
-          class="w-6 h-6 rounded bg-blue-600/30 border border-blue-400/40 flex items-center justify-center text-blue-300">
+          class="w-6 h-6 rounded bg-blue-600/20 border border-blue-400/30 flex items-center justify-center text-cyan-300">
           <span class="material-symbols-outlined text-[14px]">memory</span>
         </div>
-        <span class="text-slate-300 font-bold">AEROCIRCUIT AI — Level 2 Manufacturing Planning &amp; Load
+        <span class="text-[#F8FAFC] font-bold">AEROCIRCUIT AI — Level 2 Manufacturing Planning &amp; Load
           Management</span>
       </div>
-      <div class="flex items-center gap-6 text-slate-400">
-        <a href="index.html" class="hover:text-white transition-colors">Operations Console</a>
-        <a href="agents.md" class="hover:text-white transition-colors">AGENTS.md Spec</a>
-        <a href="#architecture" class="hover:text-white transition-colors">Architecture</a>
-        <a href="#interactive-demo" class="hover:text-white transition-colors">Simulator</a>
+      <div class="flex items-center gap-6 text-[#94A3B8]">
+        <a href="index.html" class="hover:text-cyan-400 transition-colors">Operations Console</a>
+        <a href="agents.md" class="hover:text-cyan-400 transition-colors">AGENTS.md Spec</a>
+        <a href="#architecture" class="hover:text-cyan-400 transition-colors">Architecture</a>
+        <a href="#interactive-demo" class="hover:text-cyan-400 transition-colors">Simulator</a>
       </div>
-      <div class="text-slate-500">
+      <div class="text-[#94A3B8]">
         Austin Fab 4 • SAP S/4HANA Linked • Zero Plaintext Secrets
       </div>
     </div>
@@ -1832,43 +1911,43 @@ User request / new manufacturing data
   <!-- ============================================================ -->
   <!-- MODAL: CLIENT INQUIRIES & LEAD MANAGER (OWNER VIEW) -->
   <!-- ============================================================ -->
-  <div id="modal-leads" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-xs">
-    <div class="bg-white rounded-xl shadow-2xl border border-slate-300 w-full max-w-4xl max-h-[85vh] flex flex-col overflow-hidden">
+  <div id="modal-leads" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm">
+    <div class="bg-[#111C2E] rounded-xl shadow-2xl border border-[#1E293B] w-full max-w-4xl max-h-[85vh] flex flex-col overflow-hidden text-[#F8FAFC]">
       <!-- Modal Header -->
-      <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+      <div class="px-6 py-4 bg-[#0B1220] text-white flex items-center justify-between border-b border-[#1E293B]">
         <div class="flex items-center gap-2.5">
-          <span class="material-symbols-outlined text-blue-400 text-[22px]">inbox</span>
+          <span class="material-symbols-outlined text-cyan-400 text-[22px]">inbox</span>
           <div>
             <h3 class="font-bold text-sm tracking-tight flex items-center gap-2">
               <span>Client Pilot Inquiries &amp; Consultations</span>
-              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-blue-300 border border-blue-400/30 text-[10px] font-mono">Cloudflare D1 SQLite</span>
+              <span class="px-2 py-0.5 rounded bg-blue-500/20 text-cyan-300 border border-cyan-400/30 text-[10px] font-mono">Cloudflare D1 SQLite</span>
             </h3>
-            <p class="text-[11px] font-mono text-slate-400">Real-time sync with Cloudflare D1 edge database</p>
+            <p class="text-[11px] font-mono text-[#94A3B8]">Real-time sync with Cloudflare D1 edge database</p>
           </div>
         </div>
-        <button onclick="closeLeadsModal()" class="text-slate-400 hover:text-white transition-colors p-1 cursor-pointer">
+        <button onclick="closeLeadsModal()" class="text-[#94A3B8] hover:text-[#F8FAFC] transition-colors p-1 cursor-pointer">
           <span class="material-symbols-outlined text-[20px]">close</span>
         </button>
       </div>
 
       <!-- Modal Body -->
       <div class="p-6 overflow-y-auto flex-1 font-sans">
-        <div class="flex items-center justify-between mb-4 pb-2 border-b border-slate-200">
-          <div class="text-xs font-semibold text-slate-700 flex items-center gap-2">
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-[#1E293B]">
+          <div class="text-xs font-semibold text-[#F8FAFC] flex items-center gap-2">
             <span>Total Inquiries:</span>
-            <span id="modal-lead-count" class="font-mono text-blue-600 font-bold">0</span>
-            <span id="modal-d1-status" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">Checking D1...</span>
+            <span id="modal-lead-count" class="font-mono text-cyan-400 font-bold">0</span>
+            <span id="modal-d1-status" class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-[#162238] text-slate-300 border border-[#1E293B]">Checking D1...</span>
           </div>
           <div class="flex items-center gap-2">
-            <button onclick="syncLeadsFromD1()" id="btn-sync-d1" class="px-2.5 py-1.5 rounded bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs font-semibold flex items-center gap-1 transition-colors shadow-xs cursor-pointer" title="Fetch latest from Cloudflare D1">
+            <button onclick="syncLeadsFromD1()" id="btn-sync-d1" class="px-2.5 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white font-mono text-xs font-semibold flex items-center gap-1 transition-colors shadow-xs cursor-pointer" title="Fetch latest from Cloudflare D1">
               <span class="material-symbols-outlined text-[15px]" id="icon-sync-d1">sync</span>
               <span>Sync D1</span>
             </button>
-            <button onclick="exportLeadsCsv()" class="px-3 py-1.5 rounded bg-blue-600 hover:bg-blue-700 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer">
+            <button onclick="exportLeadsCsv()" class="px-3 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-mono text-xs font-semibold flex items-center gap-1.5 transition-colors shadow-xs cursor-pointer">
               <span class="material-symbols-outlined text-[15px]">download</span>
               <span>Export CSV</span>
             </button>
-            <button onclick="clearLeads()" class="px-3 py-1.5 rounded bg-slate-100 hover:bg-red-50 text-slate-600 hover:text-red-600 border border-slate-300 font-mono text-xs transition-colors cursor-pointer">
+            <button onclick="clearLeads()" class="px-3 py-1.5 rounded-lg bg-[#162238] hover:bg-red-950/60 text-[#94A3B8] hover:text-red-400 border border-[#1E293B] font-mono text-xs transition-colors cursor-pointer">
               Clear All
             </button>
           </div>
@@ -1880,12 +1959,12 @@ User request / new manufacturing data
       </div>
 
       <!-- Modal Footer -->
-      <div class="px-6 py-3 bg-slate-50 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500 font-mono">
+      <div class="px-6 py-3 bg-[#0B1220] border-t border-[#1E293B] flex items-center justify-between text-xs text-[#94A3B8] font-mono">
         <span id="d1-sync-footer" class="flex items-center gap-1.5">
-          <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
           <span>Engine: Cloudflare D1 SQLite (Edge Persistent)</span>
         </span>
-        <button onclick="closeLeadsModal()" class="px-4 py-1.5 rounded bg-slate-200 hover:bg-slate-300 text-slate-800 font-semibold transition-colors cursor-pointer">
+        <button onclick="closeLeadsModal()" class="px-4 py-1.5 rounded-lg bg-[#162238] hover:bg-[#1C2A44] text-[#F8FAFC] font-semibold transition-colors cursor-pointer border border-[#1E293B]">
           Close
         </button>
       </div>
@@ -2274,10 +2353,10 @@ User request / new manufacturing data
 
       if (leads.length === 0) {
         container.innerHTML = `
-          <div class="text-center py-10 text-slate-400">
-            <span class="material-symbols-outlined text-[40px] text-slate-300 mb-2">database</span>
-            <div class="text-xs font-semibold text-slate-600">No client consultation inquiries in database yet</div>
-            <div class="text-[11px] text-slate-400 mt-1">When clients submit the consultation form, records will be saved to Cloudflare D1 SQLite and displayed here.</div>
+          <div class="text-center py-10 text-[#94A3B8]">
+            <span class="material-symbols-outlined text-[40px] text-cyan-400/60 mb-2">database</span>
+            <div class="text-xs font-semibold text-[#F8FAFC]">No client consultation inquiries in database yet</div>
+            <div class="text-[11px] text-[#94A3B8] mt-1">When clients submit the consultation form, records will be saved to Cloudflare D1 SQLite and displayed here.</div>
           </div>
         `;
       } else {
@@ -2287,33 +2366,33 @@ User request / new manufacturing data
           const isD1 = lead.storage === "cloudflare_d1_sqlite" || sourceLabel.includes("Cloudflare");
 
           return `
-            <div class="p-4 rounded-lg bg-slate-50 border border-slate-200 text-xs text-slate-700 space-y-2.5 hover:border-blue-300 transition-colors">
+            <div class="p-4 rounded-xl bg-[#162238] border border-[#1E293B] text-xs text-slate-300 space-y-2.5 hover:border-cyan-400/40 transition-colors">
               <div class="flex items-center justify-between">
                 <div class="flex items-center gap-2">
-                  <span class="font-bold text-slate-900 text-sm">${escapeHtml(lead.name)}</span>
-                  <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 font-semibold">${escapeHtml(lead.id)}</span>
-                  <span class="font-mono text-[9px] px-1.5 py-0.5 rounded ${isD1 ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-slate-200 text-slate-700'} font-semibold">
+                  <span class="font-bold text-[#F8FAFC] text-sm">${escapeHtml(lead.name)}</span>
+                  <span class="font-mono text-[10px] px-1.5 py-0.5 rounded bg-blue-900/40 text-cyan-300 border border-cyan-500/30 font-semibold">${escapeHtml(lead.id)}</span>
+                  <span class="font-mono text-[9px] px-1.5 py-0.5 rounded ${isD1 ? 'bg-emerald-950/60 text-emerald-400 border border-emerald-500/30' : 'bg-[#111C2E] text-[#94A3B8]'} font-semibold">
                     ${isD1 ? 'Cloudflare D1 SQLite' : 'Local Cache'}
                   </span>
                 </div>
-                <div class="flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
-                  <span class="material-symbols-outlined text-[13px] text-slate-400">calendar_clock</span>
+                <div class="flex items-center gap-1.5 text-[11px] font-mono text-[#94A3B8]">
+                  <span class="material-symbols-outlined text-[13px] text-[#94A3B8]">calendar_clock</span>
                   <span><strong>Contact Date:</strong> ${formattedDate}</span>
                 </div>
               </div>
-              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-mono text-slate-600 bg-white p-2 rounded border border-slate-200/60">
-                <div><strong>Email:</strong> <a href="mailto:${escapeHtml(lead.email)}" class="text-blue-600 hover:underline">${escapeHtml(lead.email)}</a></div>
-                <div><strong>Company:</strong> ${escapeHtml(lead.company)}</div>
-                <div><strong>Role:</strong> ${escapeHtml(lead.role || 'Unspecified')}</div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] font-mono text-[#94A3B8] bg-[#111C2E] p-2 rounded-lg border border-[#1E293B]">
+                <div><strong class="text-slate-300">Email:</strong> <a href="mailto:${escapeHtml(lead.email)}" class="text-cyan-400 hover:underline">${escapeHtml(lead.email)}</a></div>
+                <div><strong class="text-slate-300">Company:</strong> ${escapeHtml(lead.company)}</div>
+                <div><strong class="text-slate-300">Role:</strong> ${escapeHtml(lead.role || 'Unspecified')}</div>
               </div>
               <div class="text-[11px] flex flex-wrap items-center gap-2">
-                <span class="font-semibold text-slate-700">Monthly Volume:</span>
-                <span class="font-mono bg-blue-50 text-blue-700 px-1.5 py-0.2 rounded border border-blue-200 text-[10px]">${escapeHtml(lead.volume || 'N/A')}</span>
-                <span class="text-slate-300">|</span>
-                <span class="font-semibold text-slate-700">Interests:</span>
-                ${(lead.interests || []).map(i => `<span class="inline-block bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-[10px] font-mono text-slate-700">${escapeHtml(i)}</span>`).join(' ')}
+                <span class="font-semibold text-slate-300">Monthly Volume:</span>
+                <span class="font-mono bg-blue-950/40 text-cyan-300 px-1.5 py-0.2 rounded border border-cyan-500/30 text-[10px]">${escapeHtml(lead.volume || 'N/A')}</span>
+                <span class="text-slate-500">|</span>
+                <span class="font-semibold text-slate-300">Interests:</span>
+                ${(lead.interests || []).map(i => `<span class="inline-block bg-[#111C2E] px-1.5 py-0.5 rounded border border-[#1E293B] text-[10px] font-mono text-cyan-300">${escapeHtml(i)}</span>`).join(' ')}
               </div>
-              ${lead.message ? `<div class="p-2.5 rounded bg-white border border-slate-200 text-[11px] text-slate-600 italic leading-relaxed">"${escapeHtml(lead.message)}"</div>` : ''}
+              ${lead.message ? `<div class="p-2.5 rounded-lg bg-[#111C2E] border border-[#1E293B] text-[11px] text-[#94A3B8] italic leading-relaxed">"${escapeHtml(lead.message)}"</div>` : ''}
             </div>
           `;
         }).join('');
